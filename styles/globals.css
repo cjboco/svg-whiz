@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Biryani:wght@300;700&family=Days+One&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Biryani', Helvetica Neue, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+h1,
+h2 {
+  font-family: 'Days One', sans-serif;
+  font-weight: 300;
 }
 
 a {
