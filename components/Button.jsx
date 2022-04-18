@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({ label = 'Button', size = 'medium', handleClick }) => {
   const Btn = styled.button(({ size }) => `
-    display: block;
+    display: inline-block;
     appearance: none;
     border: 0;
     border-radius: .5rem;

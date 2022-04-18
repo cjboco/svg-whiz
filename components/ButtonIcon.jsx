@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Button = ({ label, icon, size, handleClick }) => {
+const Button = ({ label, icon, iconPosition, size, handleClick }) => {
   const Btn = styled.button(({ size }) => `
-    display: block;
+    display: inline-flex;
+    align-items: center;
     appearance: none;
     border: 0;
     border-radius: .5rem;
@@ -20,14 +21,30 @@ const Button = ({ label, icon, size, handleClick }) => {
     &:active {
       background-color: #a8b0b3;
     }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.start {
+        margin-right: 0.3rem;
+      }
+
+      &.end {
+        margin-left: 0.3rem;
+      }
+    }
   `);
 
-  return <Btn type="button" size={size} onClick={handleClick}>{label}</Btn>;
+
+  return <Btn type="button" size={size} onClick={handleClick}>{icon && ['left','start'].indexOf(iconPosition) > -1 ? <span className="icon start">{icon}</span> : ''}{label}{icon && ['right','end'].indexOf(iconPosition) > -1 ? <span className="icon end">{icon}</span> : ''}</Btn>;
 }
 
 Button.PropTypes = {
   label: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.elementType,
+  iconPosition: PropTypes.oneOf(['left','start','right','end']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   handleClick: PropTypes.func.isRequired
 }
@@ -35,6 +52,7 @@ Button.PropTypes = {
 Button.defaultProps = {
   label: 'Button',
   icon: '',
+  iconPosition: 'start',
   size: 'medium',
   handleClick: null
 }
