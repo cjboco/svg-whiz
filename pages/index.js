@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import Button from '../components/Button';
 
 export default function Home() {
   return (
@@ -23,6 +24,19 @@ export default function Home() {
           }
         />
         <h1 className={styles.title}>Welcome to SVG-Whiz.</h1>
+        <p>
+          Drag-n-drop your SVG image onto the screen or click the button below
+          to browse files from your computer.
+        </p>
+        <Button
+          isPrimary
+          label='Browse'
+          size='large'
+          handleClick={(e) => {
+            e.preventDefault();
+            alert('Coming soon!');
+          }}
+        />
       </main>
 
       <footer className={styles.footer}>

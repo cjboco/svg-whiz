@@ -5,26 +5,42 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    handleClick: { action: 'handleClick' }
-  }
+    size: {
+      name: 'Size',
+      description:
+        'The size of the button. Can be either left/start (default) or right/end.',
+      control: {
+        type: 'select',
+      },
+      options: ['small', 'medium', 'large'],
+    },
+    isPrimary: {
+      name: 'Is Primary',
+      description: 'Changing to true set as a primary button.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    handleClick: { action: 'handleClick' },
+  },
 };
 
-const Template = (args) => <Button{...args} />
+const Template = (args) => <Button {...args} />;
 
 export const Small = Template.bind({});
 Small.args = {
-  label: 'Button',
-  size: 'small'
-}
+  label: 'Click Me',
+  size: 'small',
+};
 
 export const Medium = Template.bind({});
 Medium.args = {
-  label: 'Button',
-  size: 'medium'
-}
+  label: 'Click Me',
+  size: 'medium',
+};
 
 export const Large = Template.bind({});
 Large.args = {
-  label: 'Button',
-  size: 'large'
-}
+  label: 'Click Me',
+  size: 'large',
+};

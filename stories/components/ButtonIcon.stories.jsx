@@ -1,62 +1,90 @@
 // /stories/pages/home.stories.jsx
 import ButtonIcon from '../../components/ButtonIcon';
-import { FaRegSmile } from 'react-icons/fa';
 
 export default {
   title: 'Components/ButtonIcon',
   component: ButtonIcon,
   argTypes: {
-    handleClick: { action: 'handleClick' },
-    icon: { defaultValue: <FaRegSmile /> },
+    icon: {
+      name: 'Icon',
+      description:
+        'The icon. Can be a simple string, html or react element (i.e. react-icons).',
+    },
+    iconPosition: {
+      name: 'Icon Position',
+      description:
+        'The position of the icon. Can be either left/start (default) or right/end.',
+      control: {
+        type: 'select',
+      },
+      options: ['left', 'start', 'right', 'end'],
+    },
+    size: {
+      name: 'Size',
+      description:
+        'The size of the button. Can be either left/start (default) or right/end.',
+      control: {
+        type: 'select',
+      },
+      options: ['small', 'medium', 'large'],
+    },
+    isPrimary: {
+      name: 'Is Primary',
+      description: 'Changing to true set as a primary button.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    handleClick: { name: 'Click Handler', action: 'handleClick' },
   },
 };
 
-const Template = (args) => <ButtonIcon{...args} />
+const Template = (args) => <ButtonIcon {...args} />;
 
 export const IconStartSmall = Template.bind({});
 IconStartSmall.args = {
-  label: 'Button',
-  icon: <FaRegSmile />,
+  label: 'Click Me',
+  icon: '∆',
   iconPosition: 'start',
-  size: 'small'
-}
+  size: 'small',
+};
 
 export const IconStartMedium = Template.bind({});
 IconStartMedium.args = {
-  label: 'Button',
-  icon: <FaRegSmile />,
+  label: 'Click Me',
+  icon: '∆',
   iconPosition: 'start',
-  size: 'medium'
-}
+  size: 'medium',
+};
 
 export const IconStartLarge = Template.bind({});
 IconStartLarge.args = {
-  label: 'Button',
-  icon: <FaRegSmile />,
+  label: 'Click Me',
+  icon: '∆',
   iconPosition: 'start',
-  size: 'large'
-}
+  size: 'large',
+};
 
 export const IconEndSmall = Template.bind({});
 IconEndSmall.args = {
-  label: 'Button',
-  icon: <FaRegSmile />,
+  label: 'Click Me',
+  icon: '∆',
   iconPosition: 'end',
-  size: 'small'
-}
+  size: 'small',
+};
 
 export const IconEndMedium = Template.bind({});
 IconEndMedium.args = {
-  label: 'Button',
-  icon: <FaRegSmile />,
+  label: 'Click Me',
+  icon: '∆',
   iconPosition: 'end',
-  size: 'medium'
-}
+  size: 'medium',
+};
 
 export const IconEndLarge = Template.bind({});
 IconEndLarge.args = {
-  label: 'Button',
-  icon: <FaRegSmile />,
+  label: 'Click Me',
+  icon: '∆',
   iconPosition: 'end',
-  size: 'large'
-}
+  size: 'large',
+};
