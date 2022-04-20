@@ -81,8 +81,8 @@ const Btn = styled.button`
 
 const HiddenImg = styled.img`
   position: absolute;
-  top: 15999px;
-  left: 15999px;
+  top: -15999px;
+  left: -15999px;
   width: auto;
   height: auto;
 `;
