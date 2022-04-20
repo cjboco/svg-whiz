@@ -1,9 +1,49 @@
 import Head from 'next/head';
+import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Button from '../components/Button';
+import Dropzone from '../components/Dropzone';
+import DrawingBoard from '../components/DrawingBoard';
+import Loading from '../components/Loading';
+import Btn from '../components/Button';
 
 export default function Home() {
+  // const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [dropZoneHidden, setDropZoneHidden] = useState(false);
+  const [canvasData, setCanvasData] = useState(null);
+
+  // onDrop function
+  const onDrop = useCallback((acceptedFiles) => {
+    // this callback will be called after files get dropped, we will get the acceptedFiles. If you want, you can even access the rejected files too
+    // Loop through accepted files
+    setIsLoading(true);
+    acceptedFiles.map((file) => {
+      // Initialize FileReader browser API
+      const reader = new FileReader();
+      // onload callback gets called after the reader reads the file data
+      reader.onload = function (e) {
+        // add the image into the state. Since FileReader reading process is asynchronous, its better to get the latest snapshot state (i.e., prevState) and update it.
+        setCanvasData(e.target.result);
+        setDropZoneHidden(true);
+        setIsLoading(false);
+        // we just take the first file
+        return false;
+      };
+      // Read the file as Data URL (since we accept only images)
+      reader.readAsDataURL(file);
+      return file;
+    });
+  }, []);
+
+  const handleReset = (e) => {
+    e.preventDefault();
+
+    setCanvasData(null);
+    setIsLoading(false);
+    setDropZoneHidden(false);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -24,19 +64,18 @@ export default function Home() {
           }
         />
         <h1 className={styles.title}>Welcome to SVG-Whiz.</h1>
-        <p>
-          Drag-n-drop your SVG image onto the screen or click the button below
-          to browse files from your computer.
-        </p>
-        <Button
-          isPrimary
-          label='Browse'
-          size='large'
-          handleClick={(e) => {
-            e.preventDefault();
-            alert('Coming soon!');
-          }}
+        <Dropzone
+          onDrop={onDrop}
+          accept={'image/svg+xml'}
+          isHidden={dropZoneHidden}
         />
+        <DrawingBoard width={500} height={500} svgData={canvasData} />
+        <Loading visible={isLoading} />
+        <div
+          style={dropZoneHidden ? { display: 'block' } : { display: 'none' }}
+        >
+          <Btn handleClick={handleReset} isPrimary={true} label='Reset' />
+        </div>
       </main>
 
       <footer className={styles.footer}>

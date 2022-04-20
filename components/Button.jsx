@@ -18,7 +18,7 @@ const Btn = styled.button(
   background-color: ${isPrimary ? Primary('default') : Secondary('default')};
   color: white;
   font-size: ${
-    size === 'small' ? '0.85rem' : size === 'large' ? '1.2rem' : '1rem'
+    size === 'small' ? '1rem' : size === 'large' ? '1.75rem' : '1.25rem'
   };
   transition: all 0.15s linear;
 

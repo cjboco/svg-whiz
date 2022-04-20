@@ -10,12 +10,15 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "canvg": "^4.0.0",
     "color": "^4.2.3",
+    "cuid": "^2.1.8",
     "next": "12.1.5",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "sharp": "^0.30.4",
+    "react-dropzone": "^12.0.5",
+    "spinners-react": "^1.0.7",
     "storybook": "^6.4.22",
     "styled-components": "^5.3.5"
   },
@@ -33,9 +36,9 @@
     "@storybook/builder-webpack5": "^6.4.22",
     "@storybook/manager-webpack5": "^6.4.22",
     "@storybook/react": "^6.4.22",
-    "@storybook/testing-library": "^0.0.9",
+    "@storybook/testing-library": "^0.0.10",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^8.2.5",
     "eslint": "8.13.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.1.5",
