@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Primary, Secondary } from '../components/Colors';
 
 const Btn = styled.button(
-  ({ size, isPrimary }) => `
-  display: inline-block;
+  ({ size, isPrimary, isHidden }) => `
+  display: ${isHidden ? 'none' : 'inline-block'};
   appearance: none;
   border: 0;
   border-radius: .5rem;
@@ -36,10 +36,16 @@ const Button = ({
   label = 'Click Me',
   size = 'medium',
   isPrimary = false,
+  isHidden = false,
   handleClick,
 }) => {
   return (
-    <Btn size={size} onClick={handleClick} isPrimary={isPrimary}>
+    <Btn
+      size={size}
+      onClick={handleClick}
+      isPrimary={isPrimary}
+      isHidden={isHidden}
+    >
       {label}
     </Btn>
   );
@@ -49,6 +55,7 @@ Button.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   isPrimary: PropTypes.bool,
+  isHidden: PropTypes.bool,
   handleClick: PropTypes.func,
 };
 

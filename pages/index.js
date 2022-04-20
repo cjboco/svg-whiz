@@ -8,7 +8,6 @@ import Loading from '../components/Loading';
 import Btn from '../components/Button';
 
 export default function Home() {
-  // const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [dropZoneHidden, setDropZoneHidden] = useState(false);
   const [canvasData, setCanvasData] = useState(null);
@@ -22,13 +21,12 @@ export default function Home() {
       // Initialize FileReader browser API
       const reader = new FileReader();
       // onload callback gets called after the reader reads the file data
-      reader.onload = function (e) {
+      reader.onload = (e) => {
+        // setImages((prevState) => [...prevState, { src: e.target.result }]);
         // add the image into the state. Since FileReader reading process is asynchronous, its better to get the latest snapshot state (i.e., prevState) and update it.
         setCanvasData(e.target.result);
         setDropZoneHidden(true);
         setIsLoading(false);
-        // we just take the first file
-        return false;
       };
       // Read the file as Data URL (since we accept only images)
       reader.readAsDataURL(file);
@@ -59,6 +57,7 @@ export default function Home() {
           }
           width={720}
           height={500}
+          priority={true}
           alt={
             'Splash graphic of tiny people working on a large computer monitor.'
           }
@@ -71,11 +70,12 @@ export default function Home() {
         />
         <DrawingBoard width={500} height={500} svgData={canvasData} />
         <Loading visible={isLoading} />
-        <div
-          style={dropZoneHidden ? { display: 'block' } : { display: 'none' }}
-        >
-          <Btn handleClick={handleReset} isPrimary={true} label='Reset' />
-        </div>
+        <Btn
+          handleClick={handleReset}
+          isPrimary={true}
+          isHidden={!dropZoneHidden ? true : false}
+          label='Reset'
+        />
       </main>
 
       <footer className={styles.footer}>

@@ -2,25 +2,27 @@ import React, { useRef, useEffect } from 'react';
 import { Primary, Secondary } from './Colors.jsx';
 import styled from 'styled-components';
 
-const drawOnCanvas = (canvas, svgData) => {
-  if (!canvas || !canvas.current || !svgData) {
+const px = (val) => {
+  return val + 'px';
+};
+
+const drawOnCanvas = (canvasRef, svgData) => {
+  if (!canvasRef || !canvasRef.current || !svgData) {
     return; // Should not happen, but do check anyway
   }
 
-  const myImg = new Image();
+  const canvas = canvasRef.current;
+  const ctx = canvasRef.current.getContext('2d');
+  const myImg = document.createElement('img');
+  myImg.style.width = '2500';
+  myImg.style.height = 'auto';
   myImg.src = svgData;
 
-  const ctx = canvas.current.getContext('2d');
-  const Obj = new Image();
-
-  canvas.current.width = myImg.width;
-  canvas.current.height = myImg.height;
-
-  Obj.onload = () => {
-    ctx.clearRect(0, 0, myImg.width, myImg.height);
-    ctx.drawImage(myImg, 0, 0, myImg.width, myImg.height);
+  myImg.onload = (e) => {
+    console.log(myImg.width);
+    ctx.clearRect(0, 0, 500, 500);
+    ctx.drawImage(myImg, 0, 0);
   };
-  Obj.src = svgData;
 };
 
 const Canvas = styled.canvas(
