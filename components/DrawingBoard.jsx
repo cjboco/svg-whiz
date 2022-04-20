@@ -6,21 +6,32 @@ const px = (val) => {
   return val + 'px';
 };
 
-const drawOnCanvas = (canvasRef, svgData) => {
-  if (!canvasRef || !canvasRef.current || !svgData) {
+const drawOnCanvas = (canvasRef, hiddenImgRef, svgData) => {
+  if (
+    !canvasRef ||
+    !canvasRef.current ||
+    !hiddenImgRef ||
+    !hiddenImgRef.current ||
+    !svgData
+  ) {
     return; // Should not happen, but do check anyway
   }
 
   const canvas = canvasRef.current;
   const ctx = canvasRef.current.getContext('2d');
-  const myImg = document.createElement('img');
-  myImg.style.width = '2500';
-  myImg.style.height = 'auto';
+  const myImg = hiddenImgRef.current;
   myImg.src = svgData;
 
   myImg.onload = (e) => {
-    console.log(myImg.width);
-    ctx.clearRect(0, 0, 500, 500);
+    const width = getComputedStyle(e.target)
+      .getPropertyValue('width')
+      .replace(/px$/, '');
+    const height = getComputedStyle(e.target)
+      .getPropertyValue('height')
+      .replace(/px$/, '');
+    canvas.width = width;
+    canvas.height = height;
+    ctx.clearRect(0, 0, width, width);
     ctx.drawImage(myImg, 0, 0);
   };
 };
@@ -68,14 +79,23 @@ const Btn = styled.button`
   }
 `;
 
+const HiddenImg = styled.img`
+  position: absolute;
+  top: 15999px;
+  left: 15999px;
+  width: auto;
+  height: auto;
+`;
+
 const DrawingBoard = ({ width, height, svgData }) => {
   const myCanvas = useRef();
+  const hiddenImg = useRef();
   const btnGIF = useRef();
   const btnPNG = useRef();
 
   useEffect(() => {
-    drawOnCanvas(myCanvas, svgData);
-  }, [svgData, myCanvas]);
+    drawOnCanvas(myCanvas, hiddenImg, svgData);
+  }, [svgData, myCanvas, hiddenImg]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -98,6 +118,7 @@ const DrawingBoard = ({ width, height, svgData }) => {
 
   return (
     <>
+      <HiddenImg ref={hiddenImg} />
       {svgData ? (
         <>
           <Canvas
