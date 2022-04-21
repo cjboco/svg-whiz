@@ -8,7 +8,7 @@
     "url": "https://cjboco.com/"
   },
   "repository": "github:cjboco/svg-whiz",
-  "bugs": "",
+  "bugs": "https://github.com/cjboco/svg-whiz/issues",
   "private": false,
   "license": "MIT",
   "main": "pages/index.js",
