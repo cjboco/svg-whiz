@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
@@ -49,6 +50,19 @@ export default function Home() {
         <meta name='description' content='Convert SVG images with ease!' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
+      <div className='status-badges'>
+        <img
+          alt='GitHub forks'
+          src='https://img.shields.io/github/forks/cjboco/svg-whiz?style=social'
+          aria-label='Github forks display badge'
+        />
+        <img
+          alt='GitHub Repo stars'
+          src='https://img.shields.io/github/stars/cjboco/svg-whiz?style=social'
+          aria-label='Github repo stars display badge'
+        />
+      </div>
 
       {/* http://codepo8.github.io/css-fork-on-github-ribbon/ */}
       <span id='forkongithub'>

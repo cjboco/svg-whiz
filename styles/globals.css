@@ -24,6 +24,20 @@ a {
   box-sizing: border-box;
 }
 
+.status-badges {
+  position: absolute;
+  top: 10px;
+  right: 160px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.status-badges img {
+  margin-left: 0.75rem;
+}
+
 #forkongithub a {
   background: #000;
   color: #fff;
