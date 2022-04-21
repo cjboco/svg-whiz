@@ -16,7 +16,8 @@
     "svg",
     "conversion",
     "javascript",
-    "next.js"
+    "next.js",
+    "mit"
   ],
   "scripts": {
     "dev": "next dev",
