@@ -34,7 +34,8 @@ a {
   justify-content: flex-end;
 }
 
-.status-badges img {
+.status-badges a {
+  display: inline-block;
   margin-left: 0.75rem;
 }
 

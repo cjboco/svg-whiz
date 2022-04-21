@@ -52,16 +52,26 @@ export default function Home() {
       </Head>
 
       <div className='status-badges'>
-        <img
-          alt='GitHub forks'
-          src='https://img.shields.io/github/forks/cjboco/svg-whiz?style=social'
-          aria-label='Github forks display badge'
-        />
-        <img
-          alt='GitHub Repo stars'
-          src='https://img.shields.io/github/stars/cjboco/svg-whiz?style=social'
-          aria-label='Github repo stars display badge'
-        />
+        <a
+          href='https://github.com/cjboco/svg-whiz'
+          aria-label='Link to the Github repository.'
+        >
+          <img
+            alt='GitHub forks'
+            src='https://img.shields.io/github/forks/cjboco/svg-whiz?style=social'
+            aria-label='Github forks display badge'
+          />
+        </a>
+        <a
+          href='https://github.com/cjboco/svg-whiz'
+          aria-label='Link to the Github repository.'
+        >
+          <img
+            alt='GitHub Repo stars'
+            src='https://img.shields.io/github/stars/cjboco/svg-whiz?style=social'
+            aria-label='Github repo stars display badge'
+          />
+        </a>
       </div>
 
       {/* http://codepo8.github.io/css-fork-on-github-ribbon/ */}
