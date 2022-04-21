@@ -1,6 +1,23 @@
 {
-  "name": "svg-converter",
-  "private": true,
+  "name": "svg-whiz",
+  "description": "A simple app to convert SVG's to GIF or PNG image formats.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Doug Jones",
+    "email": "dev@cjboco.com",
+    "url": "https://cjboco.com/"
+  },
+  "repository": "github:cjboco/svg-whiz",
+  "bugs": "",
+  "private": false,
+  "license": "MIT",
+  "main": "pages/index.js",
+  "keywords": [
+    "svg",
+    "conversion",
+    "javascript",
+    "next.js"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

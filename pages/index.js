@@ -50,6 +50,16 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
+      {/* http://codepo8.github.io/css-fork-on-github-ribbon/ */}
+      <span id='forkongithub'>
+        <a
+          href='https://github.com/cjboco/svg-whiz'
+          aria-label='Click to fork this project on Github.com'
+        >
+          Fork me on GitHub
+        </a>
+      </span>
+
       <main className={styles.main}>
         <Image
           src={
@@ -79,7 +89,13 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Built by Creative Juices, Bo. Co.
+        Built by{' '}
+        <a
+          href='https://cjboco.com'
+          aria-label='Link to Creative Juices, Bo. Co. website'
+        >
+          Creative Juices, Bo. Co.
+        </a>
       </footer>
     </div>
   );
