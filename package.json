@@ -40,18 +40,6 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/eslint-parser": "^7.17.0",
-    "@storybook/addon-a11y": "^6.4.22",
-    "@storybook/addon-actions": "^6.4.22",
-    "@storybook/addon-controls": "^6.4.22",
-    "@storybook/addon-essentials": "^6.4.22",
-    "@storybook/addon-interactions": "^6.4.22",
-    "@storybook/addon-links": "^6.4.22",
-    "@storybook/addon-measure": "^6.4.22",
-    "@storybook/addon-storysource": "^6.4.22",
-    "@storybook/builder-webpack5": "^6.4.22",
-    "@storybook/manager-webpack5": "^6.4.22",
-    "@storybook/react": "^6.4.22",
-    "@storybook/testing-library": "^0.0.11",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.5",
     "eslint": "8.14.0",
@@ -61,8 +49,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-storybook": "^0.5.11",
     "prettier": "^2.6.2",
-    "react-icons": "^4.3.1",
-    "storybook": "^6.4.22",
-    "storybook-addon-next": "^1.6.2"
+    "react-icons": "^4.3.1"
   }
 }
