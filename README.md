@@ -3,6 +3,8 @@
 # SVG-Whiz
 A simple app to convert SVG's to GIF or PNG image formats.
 
+Live demo: [https://svg-whiz.netlify.app](https://svg-whiz.netlify.app)
+
 ## License
 Copyright © 2022 Doug Jones
 
