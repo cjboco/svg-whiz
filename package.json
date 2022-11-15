@@ -29,26 +29,26 @@
   },
   "dependencies": {
     "color": "^4.2.3",
-    "next": "12.1.5",
+    "next": "13.0.3",
     "prop-types": "^15.8.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-dropzone": "^12.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "spinners-react": "^1.0.7",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/eslint-parser": "^7.17.0",
+    "@babel/core": "^7.20.2",
+    "@babel/eslint-parser": "^7.19.1",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.5",
-    "eslint": "8.14.0",
+    "babel-loader": "^9.1.0",
+    "eslint": "8.27.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "12.1.5",
+    "eslint-config-next": "13.0.3",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-storybook": "^0.5.11",
-    "prettier": "^2.6.2",
-    "react-icons": "^4.3.1"
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-storybook": "^0.6.7",
+    "prettier": "^2.7.1",
+    "react-icons": "^4.6.0"
   }
 }
