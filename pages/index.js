@@ -113,7 +113,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <div>Copyright &copy; 2022 Doug Jones.</div>
+        <div>Copyright &copy; 2023 Doug Jones.</div>
         <div>
           Built by{' '}
           <a
