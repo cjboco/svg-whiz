@@ -17,8 +17,7 @@
   },
   "plugins": [
     "prettier",
-    "react",
-    "react-hooks"
+    "react"
   ],
   "rules": {
     // NextJs specific fix: suppress errors for missing 'import React' in files for nextjs
