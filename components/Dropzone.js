@@ -1,52 +1,39 @@
+import React, { useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Primary } from '../components/Colors';
-import styled from 'styled-components';
 
-const getColor = (props) => {
-  if (props.isDragAccept) {
-    return `${Primary()}`;
-  }
-  if (props.isDragReject) {
-    return '#ff1744';
-  }
-  if (props.isDragActive) {
-    return `${Primary()}`;
-  }
-  return '#ddd';
+const baseStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  padding: '40px',
+  borderWidth: '2px',
+  borderRadius: '7px',
+  borderColor: '#ddd',
+  borderStyle: 'dashed',
+  backgroundColor: '#fafafa',
+  color: '#444',
+  outline: 'none',
+  transition: 'border 0.15s ease-in-out',
+  fontSize: '1.25rem',
+  textAlign: 'center',
+}
+
+const focusedStyle = {
+  borderColor: `${Primary()}`
 };
 
-const getTextColor = (props) => {
-  if (props.isDragAccept || props.isDragActive) {
-    return `${Primary()}`;
-  }
-  return '#444';
+const acceptStyle = {
+  borderColor: `${Primary()}`,
+  backgroundColor: `${Primary('light', 0.1)}`,
+  color: `${Primary()}`
 };
 
-const getBGColor = (props) => {
-  if (props.isDragAccept || props.isDragActive) {
-    return `${Primary('light', 0.1)}`;
-  }
-  return '#fafafa';
+const rejectStyle = {
+  borderColor: '#ff1744'
 };
-
-const Container = styled.div`
-  display: block;
-  width: 100%;
-  padding: 40px;
-  border-width: 2px;
-  border-radius: 7px;
-  border-color: ${(props) => getColor(props)};
-  border-style: dashed;
-  background-color: ${(props) => getBGColor(props)};
-  color: ${(props) => getTextColor(props)};
-  outline: none;
-  transition: border 0.15s ease-in-out;
-  font-size: 1.25rem;
-
-  div {
-    width: 100%;
-  }
-`;
 
 const Dropzone = ({ onDrop, accept, isHidden = false }) => {
   // Initializing useDropzone hooks with options
@@ -62,9 +49,22 @@ const Dropzone = ({ onDrop, accept, isHidden = false }) => {
     accept,
   });
 
+  const style = useMemo(() => ({
+    ...baseStyle,
+    ...(isFocused ? focusedStyle : {}),
+    ...(isDragAccept ? acceptStyle : {}),
+    ...(isDragActive ? acceptStyle : {}),
+    ...(isDragReject ? rejectStyle : {})
+  }), [
+    isFocused,
+    isDragAccept,
+    isDragActive,
+    isDragReject
+  ]);
+
   return (
-    <div style={isHidden ? { display: 'none' } : { display: 'block' }}>
-      <Container {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
+    <div className='container' style={isHidden ? { display: 'none' } : { display: 'block', width: '100%' }}>
+      <div {...getRootProps({style})}>
         <input {...getInputProps()} />
         {isDragActive ? (
           <div className='text-center'>Release to drop the files here</div>
@@ -74,7 +74,7 @@ const Dropzone = ({ onDrop, accept, isHidden = false }) => {
             your computer.
           </div>
         )}
-      </Container>
+      </div>
     </div>
   );
 };

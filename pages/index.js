@@ -99,7 +99,7 @@ export default function Home() {
         <h1 className={styles.title}>Welcome to SVG-Whiz.</h1>
         <Dropzone
           onDrop={onDrop}
-          accept={'image/svg+xml'}
+          accept={{'image/svg+xml': []}}
           isHidden={dropZoneHidden}
         />
         <DrawingBoard width={500} height={500} svgData={canvasData} />

@@ -37,8 +37,8 @@ const drawOnCanvas = (canvasRef, hiddenImgRef, svgData) => {
 };
 
 const Canvas = styled.canvas(
-  ({ width, height, svgData }) => `
-    display: ${svgData ? 'block' : 'none'}
+  ({ width, height, data }) => `
+    display: ${data?.svgData ? 'block' : 'none'}
     width: 500px;
     height: 500px;
     border: 1px solid ${Secondary('light')};
@@ -69,12 +69,12 @@ const Btn = styled.button`
   transition: all 0.2s linear;
 
   &:hover {
-    background-color: ${Secondary('light')};
+    background-color: #444;
     color: white;
   }
 
   &:active {
-    background-color: ${Primary('light')};
+    background-color: black;
     color: white;
   }
 `;
@@ -124,7 +124,7 @@ const DrawingBoard = ({ width, height, svgData }) => {
           <Canvas
             width={width}
             height={height}
-            svgData={svgData}
+            data={svgData}
             ref={myCanvas}
           />
           <BtnGroup>

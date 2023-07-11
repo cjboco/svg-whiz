@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Primary, Secondary } from '../components/Colors';
 
 const Btn = styled.button(
-  ({ size, isPrimary, isHidden }) => `
-  display: ${isHidden ? 'none' : 'inline-block'};
+  ({ size, data }) => `
+  display: ${data?.isHidden ? 'none' : 'inline-block'};
   appearance: none;
   border: 0;
   border-radius: .5rem;
@@ -15,7 +15,7 @@ const Btn = styled.button(
       ? '0.75rem 2.15rem'
       : '0.65rem 1.85rem'
   };
-  background-color: ${isPrimary ? Primary('default') : Secondary('default')};
+  background-color: ${data?.isPrimary ? Primary('default') : Secondary('default')};
   color: white;
   font-size: ${
     size === 'small' ? '1rem' : size === 'large' ? '1.75rem' : '1.25rem'
@@ -23,11 +23,11 @@ const Btn = styled.button(
   transition: all 0.15s linear;
 
   &:hover {
-    background-color: ${isPrimary ? Primary('dark') : Secondary('dark')};
+    background-color: ${data?.isPrimary ? Primary('dark') : Secondary('dark')};
   }
 
   &:active {
-    background-color: ${isPrimary ? Primary('light') : Secondary('light')};
+    background-color: ${data?.isPrimary ? Primary('light') : Secondary('light')};
   }
 `
 );
@@ -43,8 +43,10 @@ const Button = ({
     <Btn
       size={size}
       onClick={handleClick}
-      isPrimary={isPrimary}
-      isHidden={isHidden}
+      data={{
+        isPrimary,
+        isHidden,
+      }}
     >
       {label}
     </Btn>
