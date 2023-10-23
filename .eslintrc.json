@@ -1,46 +1,130 @@
 {
   "env": {
     "browser": true,
-    "commonjs": true,
-    "es6": true,
     "node": true
   },
   "extends": [
     "next/core-web-vitals",
-    // always put prettier at last
-    "prettier"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:tailwindcss/recommended"
   ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "plugins": [
-    "prettier",
-    "react"
+    "react",
+    "tailwindcss"
   ],
   "rules": {
-    // NextJs specific fix: suppress errors for missing 'import React' in files for nextjs
+    "@next/next/no-img-element": "off",
     "react/react-in-jsx-scope": "off",
-    // NextJs specific fix: allow jsx syntax in js files
     "react/jsx-filename-extension": [
       1,
       {
         "extensions": [
           ".js",
-          ".jsx"
+          ".jsx",
+          ".ts",
+          ".tsx"
         ]
       }
-    ], //should add ".ts" if typescript project
+    ],
     "react/display-name": 1,
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
-    "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": [
+          "jsx"
+        ]
+      }
+    ],
     "no-else-return": "off",
     "import/extensions": "off",
-    "import/no-anonymous-default-export": "off"
+    "import/no-anonymous-default-export": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "no-mixed-spaces-and-tabs": [
+      "error",
+      "smart-tabs"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "no-multi-spaces": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "array-bracket-spacing": [
+      2,
+      "always"
+    ],
+    "computed-property-spacing": [
+      "error",
+      "always"
+    ],
+    "space-in-parens": [
+      "error",
+      "always"
+    ],
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    "multiline-ternary": [
+      "error",
+      "never"
+    ],
+    "brace-style": "error",
+    "curly": "error",
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/enforces-negative-arbitrary-values": "warn",
+    "tailwindcss/enforces-shorthand": "warn",
+    "tailwindcss/migration-from-tailwind-2": "warn",
+    "tailwindcss/no-arbitrary-value": "off",
+    "tailwindcss/no-custom-classname": "warn",
+    "tailwindcss/no-contradicting-classname": "error"
   }
 }
