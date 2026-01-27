@@ -2,16 +2,16 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Secondary } from './Colors.jsx';
 import styled from 'styled-components';
 
-const px = ( val ) => {
-  return val + 'px';
+const px = (val) => {
+  return `${val}px`;
 };
 
 const Canvas = styled.canvas(
-  ( { width, height, data } ) => `
+  ({ width, height, data }) => `
     display: ${data?.svgData ? 'block' : 'none'}
-    width: ${px( width )};
-    height: ${px( height )};
-    border: 1px solid ${Secondary( 'light' )};
+    width: ${px(width)};
+    height: ${px(height)};
+    border: 1px solid ${Secondary('light')};
     transform: scale(1);
   `
 );
@@ -31,7 +31,7 @@ const Btn = styled.button`
   justify-content: center;
   background-color: white;
   border-radius: 0.4rem;
-  border: 1px solid ${Secondary( 'light' )};
+  border: 1px solid ${Secondary('light')};
   margin: 0.2rem;
   padding: 0.5rem 0.75rem;
   font-size: 1.25rem;
@@ -55,88 +55,71 @@ const HiddenImg = styled.img`
   object-fit: none;
 `;
 
-const DrawingBoard = ( { width, height, svgData } ) => {
-  const [ isLoaded, setIsLoaded ] = useState( false );
+const DrawingBoard = ({ width, height, svgData }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const myCanvas = useRef();
   const hiddenImg = useRef();
   const btnGIF = useRef();
   const btnPNG = useRef();
 
-  useEffect( () => {
-    if ( isLoaded && myCanvas?.current && hiddenImg?.current ) {
-      const ctx = myCanvas.current.getContext( '2d' );
+  useEffect(() => {
+    if (isLoaded && myCanvas?.current && hiddenImg?.current) {
+      const ctx = myCanvas.current.getContext('2d');
       const width = hiddenImg.current.clientWidth;
       const height = hiddenImg.current.clientHeight;
       myCanvas.current.width = width;
       myCanvas.current.height = height;
-      ctx.clearRect( 0, 0, width, width );
-      ctx.drawImage( hiddenImg.current, 0, 0 );
+      ctx.clearRect(0, 0, width, width);
+      ctx.drawImage(hiddenImg.current, 0, 0);
     }
-  }, [ isLoaded, myCanvas, hiddenImg ] );
+  }, [isLoaded]);
 
-  const handleClick = ( e ) => {
+  const handleClick = (e) => {
     e.preventDefault();
 
-    const type = e.currentTarget.getAttribute( 'data-type' );
+    const type = e.currentTarget.getAttribute('data-type');
     const canvas = myCanvas.current;
-    const anchor = document.createElement( 'a' );
+    const anchor = document.createElement('a');
 
-    if ( type === 'GIF' ) {
+    if (type === 'GIF') {
       anchor.download = 'converted-svg.gif';
-      anchor.href = canvas.toDataURL( 'image/gif' );
-    } else if ( type === 'PNG' ) {
+      anchor.href = canvas.toDataURL('image/gif');
+    } else if (type === 'PNG') {
       anchor.download = 'converted-svg.png';
-      anchor.href = canvas.toDataURL( 'image/png' );
+      anchor.href = canvas.toDataURL('image/png');
     }
 
     anchor.click();
     anchor.remove();
   };
 
-  if ( !svgData ) {
+  if (!svgData) {
     return null;
   }
 
   return (
     <>
-      <div style={{
-        position: 'absolute',
-        top: '90vw',
-        left: '90vh',
-        width: '1440px',
-        height: '1440px',
-        zIindex: '10',
-        overflow: 'hidden'
-      }}>
-        <HiddenImg
-          src={svgData}
-          onLoad={() => setIsLoaded( true )}
-          ref={hiddenImg}
-        />
+      <div
+        style={{
+          position: 'absolute',
+          top: '90vw',
+          left: '90vh',
+          width: '1440px',
+          height: '1440px',
+          zIindex: '10',
+          overflow: 'hidden',
+        }}
+      >
+        <HiddenImg src={svgData} onLoad={() => setIsLoaded(true)} ref={hiddenImg} />
       </div>
-      <Canvas
-        width={width}
-        height={height}
-        data={svgData}
-        ref={myCanvas}
-      />
+      <Canvas width={width} height={height} data={svgData} ref={myCanvas} />
       <BtnGroup>
-        <Btn
-          role='button'
-          onClick={handleClick}
-          data-type='GIF'
-          ref={btnGIF}
-        >
-              Download - GIF
+        <Btn type='button' onClick={handleClick} data-type='GIF' ref={btnGIF}>
+          Download - GIF
         </Btn>
-        <Btn
-          role='button'
-          onClick={handleClick}
-          data-type='PNG'
-          ref={btnPNG}
-        >
-              Download - PNG
+        <Btn type='button' onClick={handleClick} data-type='PNG' ref={btnPNG}>
+          Download - PNG
         </Btn>
       </BtnGroup>
     </>

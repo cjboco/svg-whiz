@@ -20,8 +20,8 @@ export const Primary = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Secondary = (version, opacity = 1.0) => {
@@ -29,8 +29,8 @@ export const Secondary = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Success = (version, opacity = 1.0) => {
@@ -38,8 +38,8 @@ export const Success = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Warning = (version, opacity = 1.0) => {
@@ -47,8 +47,8 @@ export const Warning = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Danger = (version, opacity = 1.0) => {
@@ -56,8 +56,8 @@ export const Danger = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Info = (version, opacity = 1.0) => {
@@ -65,8 +65,8 @@ export const Info = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Dark = (version, opacity = 1.0) => {
@@ -74,8 +74,8 @@ export const Dark = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export const Light = (version, opacity = 1.0) => {
@@ -83,8 +83,8 @@ export const Light = (version, opacity = 1.0) => {
   return version === 'dark'
     ? color.lighten(DarkenAmount).alpha(opacity).rgb()
     : version === 'light'
-    ? color.darken(LightenAmount).alpha(opacity).rgb()
-    : color.alpha(opacity).rgb();
+      ? color.darken(LightenAmount).alpha(opacity).rgb()
+      : color.alpha(opacity).rgb();
 };
 
 export default Secondary;

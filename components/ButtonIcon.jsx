@@ -10,17 +10,11 @@ const Btn = styled.button(
   border: 0;
   border-radius: .5rem;
   padding: ${
-    size === 'small'
-      ? '0.5rem 1.35rem'
-      : size === 'large'
-      ? '0.75rem 2.15rem'
-      : '0.65rem 1.85rem'
+    size === 'small' ? '0.5rem 1.35rem' : size === 'large' ? '0.75rem 2.15rem' : '0.65rem 1.85rem'
   };
   background-color: ${isPrimary ? Primary('default') : Secondary('default')};
   color: white;
-  font-size: ${
-    size === 'small' ? '0.85rem' : size === 'large' ? '1.2rem' : '1rem'
-  };
+  font-size: ${size === 'small' ? '0.85rem' : size === 'large' ? '1.2rem' : '1rem'};
   transition: all 0.15s linear;
 
   &:hover {
