@@ -1,8 +1,19 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Primary, Secondary } from '../components/Colors';
+import { Primary, Secondary } from './Colors';
 
-const Btn = styled.button(
+type ButtonSize = 'small' | 'medium' | 'large';
+
+interface ButtonData {
+  isPrimary?: boolean;
+  isHidden?: boolean;
+}
+
+interface StyledButtonProps {
+  size: ButtonSize;
+  data: ButtonData;
+}
+
+const Btn = styled.button<StyledButtonProps>(
   ({ size, data }) => `
   display: ${data?.isHidden ? 'none' : 'inline-block'};
   appearance: none;
@@ -26,13 +37,21 @@ const Btn = styled.button(
 `
 );
 
+interface ButtonProps {
+  label?: string;
+  size?: ButtonSize;
+  isPrimary?: boolean;
+  isHidden?: boolean;
+  handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
 const Button = ({
   label = 'Click Me',
   size = 'medium',
   isPrimary = false,
   isHidden = false,
   handleClick,
-}) => {
+}: ButtonProps) => {
   return (
     <Btn
       size={size}
@@ -45,14 +64,6 @@ const Button = ({
       {label}
     </Btn>
   );
-};
-
-Button.propTypes = {
-  label: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  isPrimary: PropTypes.bool,
-  isHidden: PropTypes.bool,
-  handleClick: PropTypes.func,
 };
 
 export default Button;

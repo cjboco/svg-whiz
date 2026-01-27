@@ -1,6 +1,6 @@
 import { SpinnerCircular } from 'spinners-react';
-import { Primary } from '../components/Colors.jsx';
 import styled from 'styled-components';
+import { Primary } from './Colors';
 
 const Page = styled.div`
   position: fixed;
@@ -20,7 +20,11 @@ const Label = styled.h2`
   color: ${Primary()};
 `;
 
-const Loading = ({ visible = false }) => {
+interface LoadingProps {
+  visible?: boolean;
+}
+
+const Loading = ({ visible = false }: LoadingProps) => {
   return (
     <>
       {visible ? (
@@ -29,8 +33,8 @@ const Loading = ({ visible = false }) => {
             size={70}
             thickness={180}
             speed={100}
-            color={Primary('default')}
-            secondaryColor={Primary('default', 0.1)}
+            color={`${Primary('default')}`}
+            secondaryColor={`${Primary('default', 0.1)}`}
           />
           <Label>Processing</Label>
         </Page>

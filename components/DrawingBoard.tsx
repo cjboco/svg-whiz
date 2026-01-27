@@ -1,14 +1,20 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Secondary } from './Colors.jsx';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { Secondary } from './Colors';
 
-const px = (val) => {
+const px = (val: number) => {
   return `${val}px`;
 };
 
-const Canvas = styled.canvas(
-  ({ width, height, data }) => `
-    display: ${data?.svgData ? 'block' : 'none'}
+interface CanvasProps {
+  width: number;
+  height: number;
+  $svgData: string | null;
+}
+
+const Canvas = styled.canvas<CanvasProps>(
+  ({ width, height, $svgData }) => `
+    display: ${$svgData ? 'block' : 'none'}
     width: ${px(width)};
     height: ${px(height)};
     border: 1px solid ${Secondary('light')};
@@ -55,31 +61,41 @@ const HiddenImg = styled.img`
   object-fit: none;
 `;
 
-const DrawingBoard = ({ width, height, svgData }) => {
+interface DrawingBoardProps {
+  width: number;
+  height: number;
+  svgData: string | null;
+}
+
+const DrawingBoard = ({ width, height, svgData }: DrawingBoardProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const myCanvas = useRef();
-  const hiddenImg = useRef();
-  const btnGIF = useRef();
-  const btnPNG = useRef();
+  const myCanvas = useRef<HTMLCanvasElement>(null);
+  const hiddenImg = useRef<HTMLImageElement>(null);
+  const btnGIF = useRef<HTMLButtonElement>(null);
+  const btnPNG = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (isLoaded && myCanvas?.current && hiddenImg?.current) {
       const ctx = myCanvas.current.getContext('2d');
-      const width = hiddenImg.current.clientWidth;
-      const height = hiddenImg.current.clientHeight;
-      myCanvas.current.width = width;
-      myCanvas.current.height = height;
-      ctx.clearRect(0, 0, width, width);
-      ctx.drawImage(hiddenImg.current, 0, 0);
+      const imgWidth = hiddenImg.current.clientWidth;
+      const imgHeight = hiddenImg.current.clientHeight;
+      myCanvas.current.width = imgWidth;
+      myCanvas.current.height = imgHeight;
+      ctx?.clearRect(0, 0, imgWidth, imgWidth);
+      ctx?.drawImage(hiddenImg.current, 0, 0);
     }
   }, [isLoaded]);
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const type = e.currentTarget.getAttribute('data-type');
     const canvas = myCanvas.current;
+    if (!canvas) {
+      return;
+    }
+
     const anchor = document.createElement('a');
 
     if (type === 'GIF') {
@@ -107,13 +123,13 @@ const DrawingBoard = ({ width, height, svgData }) => {
           left: '90vh',
           width: '1440px',
           height: '1440px',
-          zIindex: '10',
+          zIndex: '10',
           overflow: 'hidden',
         }}
       >
         <HiddenImg src={svgData} onLoad={() => setIsLoaded(true)} ref={hiddenImg} />
       </div>
-      <Canvas width={width} height={height} data={svgData} ref={myCanvas} />
+      <Canvas width={width} height={height} $svgData={svgData} ref={myCanvas} />
       <BtnGroup>
         <Btn type='button' onClick={handleClick} data-type='GIF' ref={btnGIF}>
           Download - GIF
@@ -125,4 +141,5 @@ const DrawingBoard = ({ width, height, svgData }) => {
     </>
   );
 };
+
 export default DrawingBoard;

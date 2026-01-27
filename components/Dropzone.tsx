@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { Primary } from '../components/Colors';
+import type { CSSProperties } from 'react';
+import { useMemo } from 'react';
+import { type Accept, type FileRejection, useDropzone } from 'react-dropzone';
+import { Primary } from './Colors';
 
-const baseStyle = {
+const baseStyle: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -21,22 +22,27 @@ const baseStyle = {
   textAlign: 'center',
 };
 
-const focusedStyle = {
+const focusedStyle: CSSProperties = {
   borderColor: `${Primary()}`,
 };
 
-const acceptStyle = {
+const acceptStyle: CSSProperties = {
   borderColor: `${Primary()}`,
   backgroundColor: `${Primary('light', 0.1)}`,
   color: `${Primary()}`,
 };
 
-const rejectStyle = {
+const rejectStyle: CSSProperties = {
   borderColor: '#ff1744',
 };
 
-const Dropzone = ({ onDrop, accept, isHidden = false }) => {
-  // Initializing useDropzone hooks with options
+interface DropzoneProps {
+  onDrop: (acceptedFiles: File[], fileRejections: FileRejection[]) => void;
+  accept: Accept;
+  isHidden?: boolean;
+}
+
+const Dropzone = ({ onDrop, accept, isHidden = false }: DropzoneProps) => {
   const { getRootProps, getInputProps, isDragActive, isFocused, isDragAccept, isDragReject } =
     useDropzone({
       onDrop,

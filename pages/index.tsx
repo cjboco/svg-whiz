@@ -1,41 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
-import React, { useCallback, useState } from 'react';
-import Image from "next/legacy/image";
-import styles from '../styles/Home.module.css';
-import Dropzone from '../components/Dropzone';
-import DrawingBoard from '../components/DrawingBoard';
-import Loading from '../components/Loading';
+import Image from 'next/legacy/image';
+import { useCallback, useState } from 'react';
 import Btn from '../components/Button';
+import DrawingBoard from '../components/DrawingBoard';
+import Dropzone from '../components/Dropzone';
+import Loading from '../components/Loading';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [dropZoneHidden, setDropZoneHidden] = useState(false);
-  const [canvasData, setCanvasData] = useState(null);
+  const [canvasData, setCanvasData] = useState<string | null>(null);
 
-  // onDrop function
-  const onDrop = useCallback((acceptedFiles) => {
-    // this callback will be called after files get dropped, we will get the acceptedFiles. If you want, you can even access the rejected files too
-    // Loop through accepted files
+  const onDrop = useCallback((acceptedFiles: File[]) => {
     setIsLoading(true);
     acceptedFiles.map((file) => {
-      // Initialize FileReader browser API
       const reader = new FileReader();
-      // onload callback gets called after the reader reads the file data
       reader.onload = (e) => {
-        // setImages((prevState) => [...prevState, { src: e.target.result }]);
-        // add the image into the state. Since FileReader reading process is asynchronous, its better to get the latest snapshot state (i.e., prevState) and update it.
-        setCanvasData(e.target.result);
+        setCanvasData(e.target?.result as string);
         setDropZoneHidden(true);
         setIsLoading(false);
       };
-      // Read the file as Data URL (since we accept only images)
       reader.readAsDataURL(file);
       return file;
     });
   }, []);
 
-  const handleReset = (e) => {
+  const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     setCanvasData(null);
