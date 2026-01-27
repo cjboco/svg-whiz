@@ -12,12 +12,12 @@ const baseStyle: CSSProperties = {
   padding: '40px',
   borderWidth: '2px',
   borderRadius: '7px',
-  borderColor: '#ddd',
+  borderColor: 'var(--color-border)',
   borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
-  color: '#444',
+  backgroundColor: 'var(--color-dropzone-bg)',
+  color: 'var(--color-dropzone-text)',
   outline: 'none',
-  transition: 'border 0.15s ease-in-out',
+  transition: 'border 0.15s ease-in-out, background-color 0.3s ease, color 0.3s ease',
   fontSize: '1.25rem',
   textAlign: 'center',
 };
@@ -33,7 +33,7 @@ const acceptStyle: CSSProperties = {
 };
 
 const rejectStyle: CSSProperties = {
-  borderColor: '#ff1744',
+  borderColor: 'var(--color-danger)',
 };
 
 interface DropzoneProps {

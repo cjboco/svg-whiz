@@ -12,8 +12,9 @@ const Page = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--color-loading-overlay);
   z-index: 1;
+  transition: background-color 0.3s ease;
 `;
 
 const Label = styled.h2`

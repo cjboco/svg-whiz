@@ -35,9 +35,10 @@ const Btn = styled.button`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: var(--color-btn-bg);
+  color: var(--color-text-primary);
   border-radius: 0.4rem;
-  border: 1px solid ${Secondary('light')};
+  border: 1px solid var(--color-border);
   margin: 0.2rem;
   padding: 0.5rem 0.75rem;
   font-size: 1.25rem;
@@ -45,13 +46,13 @@ const Btn = styled.button`
   transition: all 0.2s linear;
 
   &:hover {
-    background-color: #444;
-    color: white;
+    background-color: var(--color-btn-hover);
+    color: var(--color-bg-primary);
   }
 
   &:active {
-    background-color: black;
-    color: white;
+    background-color: var(--color-btn-active);
+    color: var(--color-bg-primary);
   }
 `;
 

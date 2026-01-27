@@ -5,6 +5,7 @@ import Btn from '../components/Button';
 import DrawingBoard from '../components/DrawingBoard';
 import Dropzone from '../components/Dropzone';
 import Loading from '../components/Loading';
+import ThemeToggle from '../components/ThemeToggle';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -43,6 +44,7 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
+        <ThemeToggle />
         <div className='status-badges'>
           <a href='https://github.com/cjboco/svg-whiz' aria-label='Link to the Github repository.'>
             <img
@@ -72,13 +74,17 @@ export default function Home() {
 
         <main className={styles.main}>
           <Image
-            src={'/tiny-people-drawing-with-pen-graphic-editor-isolated-flat-design.jpg'}
+            src={'/A_2D_digital_illustration_showcases_the_conversion.png'}
             width={720}
-            height={500}
+            height={480}
             priority={true}
-            alt={'Splash graphic of tiny people working on a large computer monitor.'}
+            alt={'Illustration showcasing SVG to image conversion'}
           />
           <h1 className={styles.title}>Welcome to SVG-Whiz.</h1>
+          <p className={styles.description}>
+            A simple tool to convert your SVG files to PNG or GIF format. Drop an SVG below, preview
+            it, and download in your preferred format.
+          </p>
           <Dropzone onDrop={onDrop} accept={{ 'image/svg+xml': [] }} isHidden={dropZoneHidden} />
           <DrawingBoard width={500} height={500} svgData={canvasData} />
           <Loading visible={isLoading} />

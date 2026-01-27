@@ -23,6 +23,14 @@
   text-align: center;
 }
 
+.description {
+  text-align: center;
+  max-width: 500px;
+  margin: 0.5rem 0 1.5rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -38,6 +46,6 @@
 
 .footer a:active,
 .footer a:hover {
-  color: #ad1cea;
+  color: var(--color-primary);
   text-decoration: underline;
 }
