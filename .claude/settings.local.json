@@ -16,7 +16,9 @@
       "Bash(npm run build:*)",
       "Bash(npm run typecheck:*)",
       "Bash(bun fullcheck:*)",
-      "Bash(bun run check)"
+      "Bash(bun run check)",
+      "Bash(bun typecheck:*)",
+      "Bash(bun lint:*)"
     ]
   }
 }
