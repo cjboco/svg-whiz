@@ -6,7 +6,7 @@ import DrawingBoard from '../components/DrawingBoard';
 import Dropzone from '../components/Dropzone';
 import Loading from '../components/Loading';
 import ThemeToggle from '../components/ThemeToggle';
-import { daysOne } from './_app';
+import { daysOne } from '../lib/fonts';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);

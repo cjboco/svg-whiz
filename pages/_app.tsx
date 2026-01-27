@@ -1,17 +1,7 @@
 import type { AppProps } from 'next/app';
-import { Biryani, Days_One } from 'next/font/google';
 import { ThemeProvider } from '../context/ThemeContext';
+import { biryani } from '../lib/fonts';
 import '../styles/globals.css';
-
-export const biryani = Biryani({
-  weight: ['300', '700'],
-  subsets: ['latin'],
-});
-
-export const daysOne = Days_One({
-  weight: '400',
-  subsets: ['latin'],
-});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
