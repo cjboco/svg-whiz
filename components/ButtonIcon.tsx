@@ -1,53 +1,7 @@
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
-import { Primary, Secondary } from './Colors';
 
 type ButtonSize = 'small' | 'medium' | 'large';
 type IconPosition = 'left' | 'start' | 'right' | 'end';
-
-interface StyledButtonProps {
-  size: ButtonSize;
-  $isPrimary: boolean;
-}
-
-const Btn = styled.button<StyledButtonProps>(
-  ({ size, $isPrimary }) => `
-  display: inline-flex;
-  align-items: center;
-  appearance: none;
-  border: 0;
-  border-radius: .5rem;
-  padding: ${
-    size === 'small' ? '0.5rem 1.35rem' : size === 'large' ? '0.75rem 2.15rem' : '0.65rem 1.85rem'
-  };
-  background-color: ${$isPrimary ? Primary('default') : Secondary('default')};
-  color: white;
-  font-size: ${size === 'small' ? '0.85rem' : size === 'large' ? '1.2rem' : '1rem'};
-  transition: all 0.15s linear;
-
-  &:hover {
-    background-color: ${$isPrimary ? Primary('dark') : Secondary('dark')};
-  }
-
-  &:active {
-    background-color: ${$isPrimary ? Primary('light') : Secondary('light')};
-  }
-
-  .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &.start {
-      margin-right: 0.3rem;
-    }
-
-    &.end {
-      margin-left: 0.3rem;
-    }
-  }
-`
-);
 
 interface ButtonIconProps {
   label?: string;
@@ -58,6 +12,12 @@ interface ButtonIconProps {
   handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+const sizeClasses: Record<ButtonSize, string> = {
+  small: 'px-5 py-2 text-sm',
+  medium: 'px-7 py-2.5 text-base',
+  large: 'px-8 py-3 text-lg',
+};
+
 const ButtonIcon = ({
   label = 'Click Me',
   icon = null,
@@ -66,20 +26,25 @@ const ButtonIcon = ({
   isPrimary = false,
   handleClick,
 }: ButtonIconProps) => {
+  const baseClasses =
+    'inline-flex items-center appearance-none border-0 rounded-lg text-white transition-all duration-150 cursor-pointer';
+  const colorClasses = isPrimary
+    ? 'bg-fuchsia-600 hover:bg-fuchsia-500 active:bg-fuchsia-700'
+    : 'bg-zinc-400 hover:bg-zinc-300 active:bg-zinc-500';
+
+  const showIconStart = icon && ['left', 'start'].includes(iconPosition);
+  const showIconEnd = icon && ['right', 'end'].includes(iconPosition);
+
   return (
-    <Btn type='button' size={size} onClick={handleClick} $isPrimary={isPrimary}>
-      {icon && ['left', 'start'].indexOf(iconPosition) > -1 ? (
-        <span className='icon start'>{icon}</span>
-      ) : (
-        ''
-      )}
+    <button
+      type="button"
+      className={`${baseClasses} ${sizeClasses[size]} ${colorClasses}`}
+      onClick={handleClick}
+    >
+      {showIconStart && <span className="flex items-center justify-center mr-1">{icon}</span>}
       {label}
-      {icon && ['right', 'end'].indexOf(iconPosition) > -1 ? (
-        <span className='icon end'>{icon}</span>
-      ) : (
-        ''
-      )}
-    </Btn>
+      {showIconEnd && <span className="flex items-center justify-center ml-1">{icon}</span>}
+    </button>
   );
 };
 

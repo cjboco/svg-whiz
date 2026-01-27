@@ -1,48 +1,25 @@
 import { SpinnerCircular } from 'spinners-react';
-import styled from 'styled-components';
-import { Primary } from './Colors';
-
-const Page = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-loading-overlay);
-  z-index: 1;
-  transition: background-color 0.3s ease;
-`;
-
-const Label = styled.h2`
-  color: ${Primary()};
-`;
 
 interface LoadingProps {
   visible?: boolean;
 }
 
 const Loading = ({ visible = false }: LoadingProps) => {
+  if (!visible) {
+    return null;
+  }
+
   return (
-    <>
-      {visible ? (
-        <Page>
-          <SpinnerCircular
-            size={70}
-            thickness={180}
-            speed={100}
-            color={`${Primary('default')}`}
-            secondaryColor={`${Primary('default', 0.1)}`}
-          />
-          <Label>Processing</Label>
-        </Page>
-      ) : (
-        ''
-      )}
-    </>
+    <div className="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-white/95 dark:bg-zinc-900/95 z-[1] transition-colors duration-300">
+      <SpinnerCircular
+        size={70}
+        thickness={180}
+        speed={100}
+        color="#c026d3"
+        secondaryColor="rgba(192, 38, 211, 0.1)"
+      />
+      <h2 className="text-fuchsia-600 font-[Days_One]">Processing</h2>
+    </div>
   );
 };
 

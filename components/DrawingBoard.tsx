@@ -1,66 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-import { Secondary } from './Colors';
-
-const px = (val: number) => {
-  return `${val}px`;
-};
-
-interface CanvasProps {
-  width: number;
-  height: number;
-  $svgData: string | null;
-}
-
-const Canvas = styled.canvas<CanvasProps>(
-  ({ width, height, $svgData }) => `
-    display: ${$svgData ? 'block' : 'none'}
-    width: ${px(width)};
-    height: ${px(height)};
-    border: 1px solid ${Secondary('light')};
-    transform: scale(1);
-  `
-);
-
-const BtnGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-`;
-
-const Btn = styled.button`
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-btn-bg);
-  color: var(--color-text-primary);
-  border-radius: 0.4rem;
-  border: 1px solid var(--color-border);
-  margin: 0.2rem;
-  padding: 0.5rem 0.75rem;
-  font-size: 1.25rem;
-  line-height: 1;
-  transition: all 0.2s linear;
-
-  &:hover {
-    background-color: var(--color-btn-hover);
-    color: var(--color-bg-primary);
-  }
-
-  &:active {
-    background-color: var(--color-btn-active);
-    color: var(--color-bg-primary);
-  }
-`;
-
-const HiddenImg = styled.img`
-  width: auto !important;
-  height: auto !important;
-  object-fit: none;
-`;
 
 interface DrawingBoardProps {
   width: number;
@@ -73,8 +11,6 @@ const DrawingBoard = ({ width, height, svgData }: DrawingBoardProps) => {
 
   const myCanvas = useRef<HTMLCanvasElement>(null);
   const hiddenImg = useRef<HTMLImageElement>(null);
-  const btnGIF = useRef<HTMLButtonElement>(null);
-  const btnPNG = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (isLoaded && myCanvas?.current && hiddenImg?.current) {
@@ -117,28 +53,40 @@ const DrawingBoard = ({ width, height, svgData }: DrawingBoardProps) => {
 
   return (
     <>
-      <div
-        style={{
-          position: 'absolute',
-          top: '90vw',
-          left: '90vh',
-          width: '1440px',
-          height: '1440px',
-          zIndex: '10',
-          overflow: 'hidden',
-        }}
-      >
-        <HiddenImg src={svgData} onLoad={() => setIsLoaded(true)} ref={hiddenImg} />
+      <div className="absolute top-[90vw] left-[90vh] w-[1440px] h-[1440px] z-10 overflow-hidden">
+        {/* biome-ignore lint/a11y/useAltText: Hidden image for canvas processing */}
+        <img
+          src={svgData}
+          onLoad={() => setIsLoaded(true)}
+          ref={hiddenImg}
+          className="w-auto h-auto object-none"
+        />
       </div>
-      <Canvas width={width} height={height} $svgData={svgData} ref={myCanvas} />
-      <BtnGroup>
-        <Btn type='button' onClick={handleClick} data-type='GIF' ref={btnGIF}>
+      <canvas
+        ref={myCanvas}
+        width={width}
+        height={height}
+        className="block border border-zinc-300 dark:border-zinc-600"
+        style={{ width: `${width}px`, height: `${height}px` }}
+      />
+      <div className="flex flex-row items-center justify-center mt-4">
+        <button
+          type="button"
+          onClick={handleClick}
+          data-type="GIF"
+          className="inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer"
+        >
           Download - GIF
-        </Btn>
-        <Btn type='button' onClick={handleClick} data-type='PNG' ref={btnPNG}>
+        </button>
+        <button
+          type="button"
+          onClick={handleClick}
+          data-type="PNG"
+          className="inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer"
+        >
           Download - PNG
-        </Btn>
-      </BtnGroup>
+        </button>
+      </div>
     </>
   );
 };

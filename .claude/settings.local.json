@@ -8,7 +8,13 @@
       "Bash(bun run format:*)",
       "Bash(bun add:*)",
       "Bash(bun remove:*)",
-      "Bash(bun run typecheck:*)"
+      "Bash(bun run typecheck:*)",
+      "Bash(grep:*)",
+      "WebSearch",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run typecheck:*)"
     ]
   }
 }

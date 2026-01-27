@@ -1,7 +1,8 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { type Theme, type ThemeMode, darkTheme, lightTheme } from '../styles/theme';
+
+export type ThemeMode = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: ThemeMode;
@@ -12,10 +13,12 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'svg-whiz-theme';
 
-function applyTheme(theme: Theme) {
+function applyTheme(theme: ThemeMode) {
   const root = document.documentElement;
-  for (const [key, value] of Object.entries(theme)) {
-    root.style.setProperty(key, value);
+  if (theme === 'dark') {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
   }
 }
 
@@ -30,7 +33,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const stored = localStorage.getItem(STORAGE_KEY) as ThemeMode | null;
     if (stored === 'light' || stored === 'dark') {
       setTheme(stored);
-      applyTheme(stored === 'dark' ? darkTheme : lightTheme);
+      applyTheme(stored);
       return;
     }
 
@@ -38,7 +41,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme = prefersDark ? 'dark' : 'light';
     setTheme(initialTheme);
-    applyTheme(initialTheme === 'dark' ? darkTheme : lightTheme);
+    applyTheme(initialTheme);
   }, []);
 
   // Listen for system preference changes
@@ -50,7 +53,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (!stored) {
         const newTheme = e.matches ? 'dark' : 'light';
         setTheme(newTheme);
-        applyTheme(newTheme === 'dark' ? darkTheme : lightTheme);
+        applyTheme(newTheme);
       }
     };
 
@@ -62,7 +65,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme((prev) => {
       const next = prev === 'light' ? 'dark' : 'light';
       localStorage.setItem(STORAGE_KEY, next);
-      applyTheme(next === 'dark' ? darkTheme : lightTheme);
+      applyTheme(next);
       return next;
     });
   }, []);
