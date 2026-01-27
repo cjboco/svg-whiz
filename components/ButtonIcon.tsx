@@ -37,13 +37,13 @@ const ButtonIcon = ({
 
   return (
     <button
-      type="button"
+      type='button'
       className={`${baseClasses} ${sizeClasses[size]} ${colorClasses}`}
       onClick={handleClick}
     >
-      {showIconStart && <span className="flex items-center justify-center mr-1">{icon}</span>}
+      {showIconStart && <span className='flex items-center justify-center mr-1'>{icon}</span>}
       {label}
-      {showIconEnd && <span className="flex items-center justify-center ml-1">{icon}</span>}
+      {showIconEnd && <span className='flex items-center justify-center ml-1'>{icon}</span>}
     </button>
   );
 };

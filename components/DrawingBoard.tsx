@@ -53,36 +53,36 @@ const DrawingBoard = ({ width, height, svgData }: DrawingBoardProps) => {
 
   return (
     <>
-      <div className="absolute top-[90vw] left-[90vh] w-[1440px] h-[1440px] z-10 overflow-hidden">
+      <div className='absolute top-[90vw] left-[90vh] w-[1440px] h-[1440px] z-10 overflow-hidden'>
         {/* biome-ignore lint/a11y/useAltText: Hidden image for canvas processing */}
         <img
           src={svgData}
           onLoad={() => setIsLoaded(true)}
           ref={hiddenImg}
-          className="w-auto h-auto object-none"
+          className='w-auto h-auto object-none'
         />
       </div>
       <canvas
         ref={myCanvas}
         width={width}
         height={height}
-        className="block border border-zinc-300 dark:border-zinc-600"
+        className='block border border-zinc-300 dark:border-zinc-600'
         style={{ width: `${width}px`, height: `${height}px` }}
       />
-      <div className="flex flex-row items-center justify-center mt-4">
+      <div className='flex flex-row items-center justify-center mt-4'>
         <button
-          type="button"
+          type='button'
           onClick={handleClick}
-          data-type="GIF"
-          className="inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer"
+          data-type='GIF'
+          className='inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer'
         >
           Download - GIF
         </button>
         <button
-          type="button"
+          type='button'
           onClick={handleClick}
-          data-type="PNG"
-          className="inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer"
+          data-type='PNG'
+          className='inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer'
         >
           Download - PNG
         </button>

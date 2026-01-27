@@ -32,16 +32,16 @@ const Dropzone = ({ onDrop, accept, isHidden = false }: DropzoneProps) => {
   }
 
   return (
-    <div className="block w-full">
+    <div className='block w-full'>
       <div
         {...getRootProps()}
         className={`flex flex-col items-center justify-center w-full p-10 border-2 border-dashed rounded-lg bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-600 outline-none transition-all duration-150 text-xl text-center cursor-pointer ${stateClasses}`}
       >
         <input {...getInputProps()} />
         {isDragActive ? (
-          <div className="text-center">Release to drop the files here</div>
+          <div className='text-center'>Release to drop the files here</div>
         ) : (
-          <div className="text-center">
+          <div className='text-center'>
             Drag &apos;n&apos; drop a SVG file here, or click to select one from your computer.
           </div>
         )}

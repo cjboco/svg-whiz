@@ -29,7 +29,7 @@ const Button = ({
 
   return (
     <button
-      type="button"
+      type='button'
       className={`${baseClasses} ${sizeClasses[size]} ${colorClasses} ${isHidden ? 'hidden' : 'inline-block'}`}
       onClick={handleClick}
     >
