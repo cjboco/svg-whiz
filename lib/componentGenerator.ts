@@ -129,15 +129,15 @@ function generateReactComponent(svgContent: string, options: ReactOptions): stri
   // Parse attributes into an object string
   const attrRegex = /(\w+)=["']([^"']*)["']/g;
   const attrs: string[] = [];
-  let attrMatch: RegExpExecArray | null;
+  let attrMatch: RegExpExecArray | null = attrRegex.exec(svgAttributes);
 
-  while ((attrMatch = attrRegex.exec(svgAttributes)) !== null) {
+  while (attrMatch !== null) {
     const [, name, value] = attrMatch;
     // Skip width and height as we'll use props
-    if (name.toLowerCase() === 'width' || name.toLowerCase() === 'height') {
-      continue;
+    if (name.toLowerCase() !== 'width' && name.toLowerCase() !== 'height') {
+      attrs.push(`${name}="${value}"`);
     }
-    attrs.push(`${name}="${value}"`);
+    attrMatch = attrRegex.exec(svgAttributes);
   }
 
   const propsType = typescript ? ': React.SVGProps<SVGSVGElement>' : '';
@@ -178,14 +178,14 @@ function generateVueComponent(svgContent: string, options: VueOptions): string {
   // Parse attributes
   const attrRegex = /(\w+(?:-\w+)*)=["']([^"']*)["']/g;
   const attrs: string[] = [];
-  let attrMatch: RegExpExecArray | null;
+  let attrMatch: RegExpExecArray | null = attrRegex.exec(svgAttributes);
 
-  while ((attrMatch = attrRegex.exec(svgAttributes)) !== null) {
+  while (attrMatch !== null) {
     const [, name, value] = attrMatch;
-    if (name.toLowerCase() === 'width' || name.toLowerCase() === 'height') {
-      continue;
+    if (name.toLowerCase() !== 'width' && name.toLowerCase() !== 'height') {
+      attrs.push(`${name}="${value}"`);
     }
-    attrs.push(`${name}="${value}"`);
+    attrMatch = attrRegex.exec(svgAttributes);
   }
 
   return `<script setup lang="ts">
