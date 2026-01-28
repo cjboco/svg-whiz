@@ -80,7 +80,7 @@ export function FormatSelector() {
             key={format.id}
             type='button'
             onClick={() => handleFormatChange(format.id)}
-            className={`p-3 rounded-lg text-left transition-all ${
+            className={`p-3 rounded-lg text-left font-semibold font-[Helvetica,_Arial,_sans-serif] transition-all ${
               exportFormat === format.id
                 ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 ring-2 ring-fuchsia-500'
                 : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700'

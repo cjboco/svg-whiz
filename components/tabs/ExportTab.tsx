@@ -117,7 +117,7 @@ export function ExportTab() {
         type='button'
         onClick={handleExport}
         disabled={isExporting}
-        className='w-full flex items-center justify-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-medium py-3 px-6 rounded-lg transition-colors'
+        className='w-full flex items-center justify-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-semibold font-[Helvetica,_Arial,_sans-serif] py-3 px-6 rounded-lg transition-colors'
       >
         <FiDownload className='w-5 h-5' />
         {isExporting ? 'Exporting...' : `Export as ${exportFormat.toUpperCase()}`}

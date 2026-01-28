@@ -49,7 +49,7 @@ export function ColorPicker() {
               type='button'
               onClick={() => handlePresetClick(preset.value)}
               disabled={isDisabled}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
                 isSelected
                   ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                   : isDisabled

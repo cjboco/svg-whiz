@@ -149,7 +149,7 @@ export function ToolsTab() {
                 key={preset.id}
                 type='button'
                 onClick={() => setOptimizePreset(preset.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
                   optimizePreset === preset.id
                     ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
@@ -167,7 +167,7 @@ export function ToolsTab() {
           type='button'
           onClick={handleOptimize}
           disabled={isOptimizing}
-          className='flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-medium py-2 px-4 rounded-lg transition-colors'
+          className='flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors'
         >
           <FiZap className='w-4 h-4' />
           {isOptimizing ? 'Optimizing...' : 'Optimize SVG'}
@@ -211,7 +211,7 @@ export function ToolsTab() {
               <button
                 type='button'
                 onClick={handleApplyOptimized}
-                className='flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm'
+                className='flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors text-sm'
               >
                 <FiCheck className='w-4 h-4' />
                 Apply Changes
@@ -219,7 +219,7 @@ export function ToolsTab() {
               <button
                 type='button'
                 onClick={handleDownloadOptimized}
-                className='flex items-center gap-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium py-2 px-4 rounded-lg transition-colors text-sm'
+                className='flex items-center gap-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-zinc-700 dark:text-zinc-300 font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors text-sm'
               >
                 <FiDownload className='w-4 h-4' />
                 Download Optimized

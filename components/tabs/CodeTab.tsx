@@ -133,7 +133,7 @@ export function CodeTab() {
           <button
             type='button'
             onClick={() => setViewMode('view')}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
               viewMode === 'view'
                 ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300'
                 : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
@@ -145,7 +145,7 @@ export function CodeTab() {
           <button
             type='button'
             onClick={() => setViewMode('edit')}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
               viewMode === 'edit'
                 ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300'
                 : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
@@ -161,7 +161,7 @@ export function CodeTab() {
             <button
               type='button'
               onClick={handleFormat}
-              className='flex items-center gap-2 px-3 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg text-sm font-medium transition-colors'
+              className='flex items-center gap-2 px-3 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors'
             >
               <FiCode className='w-4 h-4' />
               Format
@@ -169,7 +169,7 @@ export function CodeTab() {
             <button
               type='button'
               onClick={handleResetEdit}
-              className='flex items-center gap-2 px-3 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg text-sm font-medium transition-colors'
+              className='flex items-center gap-2 px-3 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors'
             >
               <FiRefreshCw className='w-4 h-4' />
               Reset
@@ -177,7 +177,7 @@ export function CodeTab() {
             <button
               type='button'
               onClick={handleApplyEdit}
-              className='flex items-center gap-2 px-3 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-lg text-sm font-medium transition-colors'
+              className='flex items-center gap-2 px-3 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors'
             >
               Apply
             </button>

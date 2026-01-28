@@ -27,7 +27,7 @@ const ButtonIcon = ({
   handleClick,
 }: ButtonIconProps) => {
   const baseClasses =
-    'inline-flex items-center appearance-none border-0 rounded-lg text-white transition-all duration-150 cursor-pointer';
+    'inline-flex items-center appearance-none border-0 rounded-lg text-white font-semibold font-[Helvetica,_Arial,_sans-serif] transition-all duration-150 cursor-pointer';
   const colorClasses = isPrimary
     ? 'bg-fuchsia-600 hover:bg-fuchsia-500 active:bg-fuchsia-700'
     : 'bg-zinc-400 hover:bg-zinc-300 active:bg-zinc-500';
