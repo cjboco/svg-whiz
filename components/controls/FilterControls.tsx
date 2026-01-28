@@ -55,9 +55,13 @@ export function FilterControls() {
 
   // Determine which preset is active (if any)
   const activePreset = presets.find((preset) => {
-    if (preset.id === 'none') return isDefault;
+    if (preset.id === 'none') {
+      return isDefault;
+    }
     const presetValues = FILTER_PRESETS[preset.id];
-    if (!presetValues) return false;
+    if (!presetValues) {
+      return false;
+    }
 
     return Object.entries(presetValues).every(
       ([key, value]) => filters[key as keyof typeof filters] === value

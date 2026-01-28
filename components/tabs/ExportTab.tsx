@@ -25,7 +25,9 @@ export function ExportTab() {
   const [error, setError] = useState<string | null>(null);
 
   const handleExport = async () => {
-    if (!svgDataUrl || !editedSvg) return;
+    if (!svgDataUrl || !editedSvg) {
+      return;
+    }
 
     setIsExporting(true);
     setError(null);

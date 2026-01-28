@@ -122,10 +122,14 @@ export function parseViewBox(
   svgString: string
 ): { minX: number; minY: number; width: number; height: number } | null {
   const match = svgString.match(/viewBox=["']([^"']+)["']/i);
-  if (!match) return null;
+  if (!match) {
+    return null;
+  }
 
   const values = match[1].split(/\s+|,/).map(Number);
-  if (values.length !== 4 || values.some(Number.isNaN)) return null;
+  if (values.length !== 4 || values.some(Number.isNaN)) {
+    return null;
+  }
 
   return {
     minX: values[0],
@@ -169,8 +173,12 @@ export function getSvgDimensions(svgString: string): { width: number; height: nu
   }
 
   // Default dimensions
-  if (!width) width = 300;
-  if (!height) height = 150;
+  if (!width) {
+    width = 300;
+  }
+  if (!height) {
+    height = 150;
+  }
 
   return { width, height };
 }

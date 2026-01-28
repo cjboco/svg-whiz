@@ -10,11 +10,15 @@ export function PreviewTab() {
   const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    if (!svgDataUrl || !canvasRef.current) return;
+    if (!svgDataUrl || !canvasRef.current) {
+      return;
+    }
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) {
+      return;
+    }
 
     const img = new Image();
     img.onload = () => {

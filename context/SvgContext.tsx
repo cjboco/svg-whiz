@@ -156,8 +156,12 @@ export function SvgProvider({ children }: { children: React.ReactNode }) {
       }
 
       // Default dimensions if nothing found
-      if (!width) width = 300;
-      if (!height) height = 150;
+      if (!width) {
+        width = 300;
+      }
+      if (!height) {
+        height = 150;
+      }
 
       setOriginalDimensions({ width, height });
     }
@@ -221,14 +225,30 @@ export function SvgProvider({ children }: { children: React.ReactNode }) {
   const getFilterCssString = useCallback(() => {
     const parts: string[] = [];
 
-    if (filters.brightness !== 100) parts.push(`brightness(${filters.brightness}%)`);
-    if (filters.contrast !== 100) parts.push(`contrast(${filters.contrast}%)`);
-    if (filters.saturate !== 100) parts.push(`saturate(${filters.saturate}%)`);
-    if (filters.hueRotate !== 0) parts.push(`hue-rotate(${filters.hueRotate}deg)`);
-    if (filters.grayscale !== 0) parts.push(`grayscale(${filters.grayscale}%)`);
-    if (filters.sepia !== 0) parts.push(`sepia(${filters.sepia}%)`);
-    if (filters.blur !== 0) parts.push(`blur(${filters.blur}px)`);
-    if (filters.invert !== 0) parts.push(`invert(${filters.invert}%)`);
+    if (filters.brightness !== 100) {
+      parts.push(`brightness(${filters.brightness}%)`);
+    }
+    if (filters.contrast !== 100) {
+      parts.push(`contrast(${filters.contrast}%)`);
+    }
+    if (filters.saturate !== 100) {
+      parts.push(`saturate(${filters.saturate}%)`);
+    }
+    if (filters.hueRotate !== 0) {
+      parts.push(`hue-rotate(${filters.hueRotate}deg)`);
+    }
+    if (filters.grayscale !== 0) {
+      parts.push(`grayscale(${filters.grayscale}%)`);
+    }
+    if (filters.sepia !== 0) {
+      parts.push(`sepia(${filters.sepia}%)`);
+    }
+    if (filters.blur !== 0) {
+      parts.push(`blur(${filters.blur}px)`);
+    }
+    if (filters.invert !== 0) {
+      parts.push(`invert(${filters.invert}%)`);
+    }
 
     return parts.length > 0 ? parts.join(' ') : 'none';
   }, [filters]);

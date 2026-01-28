@@ -25,7 +25,9 @@ export function GenerateTab() {
 
   // Generate component code when options change
   useEffect(() => {
-    if (!editedSvg) return;
+    if (!editedSvg) {
+      return;
+    }
 
     const options: ComponentOptions = {
       framework,
@@ -39,7 +41,9 @@ export function GenerateTab() {
   }, [editedSvg, framework, language, componentName, useDefaultExport]);
 
   const handleGenerateFavicon = useCallback(async () => {
-    if (!svgDataUrl) return;
+    if (!svgDataUrl) {
+      return;
+    }
 
     setIsGeneratingFavicon(true);
     setFaviconError(null);
@@ -54,7 +58,9 @@ export function GenerateTab() {
   }, [svgDataUrl]);
 
   const handleDownloadComponent = useCallback(() => {
-    if (!generatedCode) return;
+    if (!generatedCode) {
+      return;
+    }
 
     const extension = framework === 'react' ? (language === 'typescript' ? 'tsx' : 'jsx') : 'vue';
 

@@ -75,7 +75,9 @@ export function CodeTab() {
 
   useEffect(() => {
     const generateBase64 = async () => {
-      if (!editedSvg && !svgDataUrl) return;
+      if (!editedSvg && !svgDataUrl) {
+        return;
+      }
 
       switch (outputMode) {
         case 'svg':

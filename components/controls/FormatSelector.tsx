@@ -105,7 +105,9 @@ export function FormatSelector() {
       {/* Format info */}
       {(() => {
         const selected = formats.find((f) => f.id === exportFormat);
-        if (!selected) return null;
+        if (!selected) {
+          return null;
+        }
 
         return (
           <div className='text-xs text-zinc-500 dark:text-zinc-400 space-x-3'>

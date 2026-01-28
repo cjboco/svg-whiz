@@ -120,7 +120,7 @@ function generateReactComponent(svgContent: string, options: ReactOptions): stri
   // Extract the inner content of the SVG (attributes and children)
   const svgMatch = svgContent.match(/<svg([^>]*)>([\s\S]*)<\/svg>/i);
   if (!svgMatch) {
-    return `// Error: Could not parse SVG`;
+    return '// Error: Could not parse SVG';
   }
 
   const svgAttributes = svgMatch[1].trim();
@@ -169,7 +169,7 @@ function generateVueComponent(svgContent: string, options: VueOptions): string {
   // For Vue, we just need to replace the SVG attributes to use v-bind
   const svgMatch = svgContent.match(/<svg([^>]*)>([\s\S]*)<\/svg>/i);
   if (!svgMatch) {
-    return `<!-- Error: Could not parse SVG -->`;
+    return '<!-- Error: Could not parse SVG -->';
   }
 
   const svgAttributes = svgMatch[1].trim();

@@ -30,7 +30,9 @@ export function ToolsTab() {
   }, [editedSvg, setExtractedColors]);
 
   const handleOptimize = useCallback(async () => {
-    if (!editedSvg) return;
+    if (!editedSvg) {
+      return;
+    }
 
     setIsOptimizing(true);
     setOptimizeError(null);
@@ -55,7 +57,6 @@ export function ToolsTab() {
             multipass: false,
           };
           break;
-        case 'default':
         default:
           config = {
             multipass: true,
@@ -88,7 +89,9 @@ export function ToolsTab() {
   }, [optimizeResult, updateEditedSvg]);
 
   const handleDownloadOptimized = useCallback(() => {
-    if (!optimizeResult) return;
+    if (!optimizeResult) {
+      return;
+    }
 
     const blob = new Blob([optimizeResult.svg], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
@@ -114,10 +117,10 @@ export function ToolsTab() {
     : 0;
 
   return (
-    <div className='space-y-8'>
+    <div className='space-y-8 max-w-xl mx-auto text-center'>
       {/* SVG Optimizer */}
       <section className='space-y-4'>
-        <h2 className='text-lg font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2'>
+        <h2 className='text-lg font-semibold text-zinc-900 dark:text-zinc-100 flex items-center justify-center gap-2'>
           <FiZap className='w-5 h-5 text-fuchsia-600' />
           SVG Optimizer
         </h2>
@@ -131,7 +134,7 @@ export function ToolsTab() {
           <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
             Optimization Preset
           </label>
-          <div className='flex flex-wrap gap-2'>
+          <div className='flex flex-wrap justify-center gap-2'>
             {[
               {
                 id: 'safe' as const,
@@ -167,7 +170,7 @@ export function ToolsTab() {
           type='button'
           onClick={handleOptimize}
           disabled={isOptimizing}
-          className='flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors'
+          className='inline-flex items-center justify-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors'
         >
           <FiZap className='w-4 h-4' />
           {isOptimizing ? 'Optimizing...' : 'Optimize SVG'}
@@ -207,7 +210,7 @@ export function ToolsTab() {
               </div>
             </div>
 
-            <div className='flex gap-2'>
+            <div className='flex justify-center gap-2'>
               <button
                 type='button'
                 onClick={handleApplyOptimized}
@@ -238,7 +241,7 @@ export function ToolsTab() {
         </p>
 
         {extractedColors.length > 0 ? (
-          <div className='flex flex-wrap gap-3'>
+          <div className='flex flex-wrap justify-center gap-3'>
             {extractedColors.map((color, index) => (
               <ColorSwatch key={`${color}-${index}`} color={color} />
             ))}
