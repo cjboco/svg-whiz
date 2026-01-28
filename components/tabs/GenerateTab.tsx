@@ -121,7 +121,7 @@ export function GenerateTab() {
           type='button'
           onClick={handleGenerateFavicon}
           disabled={isGeneratingFavicon}
-          className='flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors'
+          className='flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 disabled:bg-fuchsia-400 text-white font-semibold font-[Helvetica,Arial,sans-serif] py-2 px-4 rounded-lg transition-colors'
         >
           <FiDownload className='w-4 h-4' />
           {isGeneratingFavicon ? 'Generating...' : 'Generate Favicon Package'}
@@ -150,22 +150,20 @@ export function GenerateTab() {
               <button
                 type='button'
                 onClick={() => setFramework('react')}
-                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                  framework === 'react'
+                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${framework === 'react'
                     ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                }`}
+                  }`}
               >
                 React
               </button>
               <button
                 type='button'
                 onClick={() => setFramework('vue')}
-                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                  framework === 'vue'
+                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${framework === 'vue'
                     ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                }`}
+                  }`}
               >
                 Vue
               </button>
@@ -182,22 +180,20 @@ export function GenerateTab() {
                 <button
                   type='button'
                   onClick={() => setLanguage('typescript')}
-                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                    language === 'typescript'
+                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${language === 'typescript'
                       ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                       : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                  }`}
+                    }`}
                 >
                   TypeScript
                 </button>
                 <button
                   type='button'
                   onClick={() => setLanguage('javascript')}
-                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                    language === 'javascript'
+                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${language === 'javascript'
                       ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                       : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                  }`}
+                    }`}
                 >
                   JavaScript
                 </button>
@@ -232,22 +228,20 @@ export function GenerateTab() {
               <button
                 type='button'
                 onClick={() => setUseDefaultExport(false)}
-                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                  !useDefaultExport
+                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${!useDefaultExport
                     ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                }`}
+                  }`}
               >
                 Named
               </button>
               <button
                 type='button'
                 onClick={() => setUseDefaultExport(true)}
-                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                  useDefaultExport
+                className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${useDefaultExport
                     ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                }`}
+                  }`}
               >
                 Default
               </button>
@@ -286,7 +280,7 @@ export function GenerateTab() {
         <button
           type='button'
           onClick={handleDownloadComponent}
-          className='flex items-center gap-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-zinc-700 dark:text-zinc-300 font-semibold font-[Helvetica,_Arial,_sans-serif] py-2 px-4 rounded-lg transition-colors'
+          className='flex items-center gap-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-zinc-700 dark:text-zinc-300 font-semibold font-[Helvetica,Arial,sans-serif] py-2 px-4 rounded-lg transition-colors'
         >
           <FiDownload className='w-4 h-4' />
           Download Component

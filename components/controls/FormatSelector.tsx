@@ -80,18 +80,16 @@ export function FormatSelector() {
             key={format.id}
             type='button'
             onClick={() => handleFormatChange(format.id)}
-            className={`p-3 rounded-lg text-left font-semibold font-[Helvetica,_Arial,_sans-serif] transition-all ${
-              exportFormat === format.id
+            className={`p-3 rounded-lg text-left font-semibold font-[Helvetica,Arial,sans-serif] transition-all ${exportFormat === format.id
                 ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 ring-2 ring-fuchsia-500'
                 : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-            }`}
+              }`}
           >
             <div
-              className={`font-medium ${
-                exportFormat === format.id
+              className={`font-medium ${exportFormat === format.id
                   ? 'text-fuchsia-700 dark:text-fuchsia-300'
                   : 'text-zinc-900 dark:text-zinc-100'
-              }`}
+                }`}
             >
               {format.label}
             </div>

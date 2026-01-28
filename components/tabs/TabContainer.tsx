@@ -33,11 +33,10 @@ export function TabContainer({ children }: TabContainerProps) {
             key={tab.id}
             type='button'
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-3 font-semibold font-[Helvetica,_Arial,_sans-serif] text-sm transition-colors border-b-2 -mb-[2px] ${
-              activeTab === tab.id
-                ? 'border-fuchsia-600 text-fuchsia-600 dark:border-fuchsia-400 dark:text-fuchsia-400'
-                : 'border-transparent text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-600'
-            }`}
+            className={`flex items-center gap-2 px-4 py-3 font-semibold font-[Helvetica,Arial,sans-serif] text-sm transition-colors border-b-2 -mb-0.5 ${activeTab === tab.id
+              ? 'border-fuchsia-600 text-fuchsia-600 dark:border-fuchsia-400 dark:text-fuchsia-400'
+              : 'border-transparent text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-600'
+              }`}
           >
             {tab.icon}
             <span className='hidden sm:inline'>{tab.label}</span>
@@ -46,7 +45,7 @@ export function TabContainer({ children }: TabContainerProps) {
       </div>
 
       {/* Tab Content */}
-      <div className='min-h-[400px]'>{children[activeTab]}</div>
+      <div className='min-h-100'>{children[activeTab]}</div>
     </div>
   );
 }

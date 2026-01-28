@@ -49,21 +49,19 @@ export function ColorPicker() {
               type='button'
               onClick={() => handlePresetClick(preset.value)}
               disabled={isDisabled}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                isSelected
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${isSelected
                   ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                   : isDisabled
                     ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-              }`}
+                }`}
               title={isDisabled ? 'JPEG does not support transparency' : undefined}
             >
               <span
-                className={`w-4 h-4 rounded border border-zinc-300 dark:border-zinc-600 ${
-                  preset.value === 'transparent'
+                className={`w-4 h-4 rounded border border-zinc-300 dark:border-zinc-600 ${preset.value === 'transparent'
                     ? "bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGD4z0AEYBxVOKoQVoYAAKIRAyZ4qCkAAAAASUVORK5CYII=')] bg-repeat"
                     : ''
-                }`}
+                  }`}
                 style={
                   preset.value !== 'transparent' ? { backgroundColor: preset.value } : undefined
                 }

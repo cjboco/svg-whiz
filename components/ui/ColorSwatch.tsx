@@ -55,7 +55,7 @@ export function ColorSwatch({ color }: ColorSwatchProps) {
     <button
       type='button'
       onClick={handleCopy}
-      className='group relative flex flex-col items-center font-semibold font-[Helvetica,_Arial,_sans-serif]'
+      className='group relative flex flex-col items-center font-semibold font-[Helvetica,Arial,sans-serif]'
       title='Click to copy'
     >
       <div

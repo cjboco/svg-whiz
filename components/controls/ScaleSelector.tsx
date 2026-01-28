@@ -27,11 +27,10 @@ export function ScaleSelector() {
             key={s.value}
             type='button'
             onClick={() => setScale(s.value)}
-            className={`flex-1 px-4 py-2 rounded-lg text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-              scale === s.value
+            className={`flex-1 px-4 py-2 rounded-lg text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${scale === s.value
                 ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300 ring-2 ring-fuchsia-500'
                 : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-            }`}
+              }`}
           >
             {s.label}
           </button>

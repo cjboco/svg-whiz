@@ -76,7 +76,7 @@ export function FilterControls() {
           type='button'
           onClick={resetFilters}
           disabled={isDefault}
-          className='flex items-center gap-1 text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] text-zinc-600 dark:text-zinc-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
+          className='flex items-center gap-1 text-sm font-semibold font-[Helvetica,Arial,sans-serif] text-zinc-600 dark:text-zinc-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
         >
           <FiRefreshCw className='w-3 h-3' />
           Reset
@@ -94,11 +94,10 @@ export function FilterControls() {
               key={preset.id}
               type='button'
               onClick={() => applyFilterPreset(preset.id)}
-              className={`px-3 py-1.5 rounded text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                activePreset?.id === preset.id
+              className={`px-3 py-1.5 rounded text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${activePreset?.id === preset.id
                   ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300'
                   : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-600'
-              }`}
+                }`}
             >
               {preset.label}
             </button>

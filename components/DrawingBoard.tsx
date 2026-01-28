@@ -76,7 +76,7 @@ const DrawingBoard = ({ width, height, svgData }: DrawingBoardProps) => {
           type='button'
           onClick={handleClick}
           data-type='GIF'
-          className='inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none font-semibold font-[Helvetica,_Arial,_sans-serif] transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer'
+          className='inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none font-semibold font-[Helvetica,Arial,sans-serif] transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer'
         >
           Download - GIF
         </button>
@@ -84,7 +84,7 @@ const DrawingBoard = ({ width, height, svgData }: DrawingBoardProps) => {
           type='button'
           onClick={handleClick}
           data-type='PNG'
-          className='inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none font-semibold font-[Helvetica,_Arial,_sans-serif] transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer'
+          className='inline-flex flex-row items-center justify-center bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-md border border-zinc-300 dark:border-zinc-600 m-1 px-3 py-2 text-xl leading-none font-semibold font-[Helvetica,Arial,sans-serif] transition-all duration-200 hover:bg-zinc-700 hover:text-white dark:hover:bg-zinc-300 dark:hover:text-zinc-900 active:bg-zinc-900 active:text-white dark:active:bg-white dark:active:text-zinc-900 cursor-pointer'
         >
           Download - PNG
         </button>

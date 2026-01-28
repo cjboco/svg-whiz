@@ -65,11 +65,10 @@ export function DimensionInput() {
                 key={preset.name}
                 type='button'
                 onClick={() => handlePresetSelect(preset.width, preset.height)}
-                className={`px-3 py-1.5 rounded text-sm font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-                  isSelected
-                    ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300'
-                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                }`}
+                className={`px-3 py-1.5 rounded text-sm font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${isSelected
+                  ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300'
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+                  }`}
               >
                 {preset.name}
               </button>
@@ -100,11 +99,10 @@ export function DimensionInput() {
         <button
           type='button'
           onClick={() => setLockAspectRatio(!lockAspectRatio)}
-          className={`mt-5 p-2 rounded-lg font-semibold font-[Helvetica,_Arial,_sans-serif] transition-colors ${
-            lockAspectRatio
-              ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-400'
-              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'
-          }`}
+          className={`mt-5 p-2 rounded-lg font-semibold font-[Helvetica,Arial,sans-serif] transition-colors ${lockAspectRatio
+            ? 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-400'
+            : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'
+            }`}
           title={lockAspectRatio ? 'Unlock aspect ratio' : 'Lock aspect ratio'}
         >
           {lockAspectRatio ? <FiLink className='w-4 h-4' /> : <FiUnlock className='w-4 h-4' />}
