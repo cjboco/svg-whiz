@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SvgProvider } from '../context/SvgContext';
 import { ThemeProvider } from '../context/ThemeContext';
 import { biryani } from '../lib/fonts';
 import '../styles/globals.css';
@@ -17,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <body
         className={`${biryani.className} min-h-screen font-light text-base bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 transition-colors duration-300`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <SvgProvider>{children}</SvgProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

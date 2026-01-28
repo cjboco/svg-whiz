@@ -22,7 +22,7 @@ const Button = ({
   handleClick,
 }: ButtonProps) => {
   const baseClasses =
-    'appearance-none border-0 rounded-lg text-white transition-all duration-150 cursor-pointer';
+    "appearance-none border-0 rounded-lg text-white transition-all duration-150 cursor-pointer inline-flex items-center justify-center font-[Helvetica,_Arial,_sans-serif] font-semibold shadow-md active:shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fuchsia-500";
   const colorClasses = isPrimary
     ? 'bg-fuchsia-600 hover:bg-fuchsia-500 active:bg-fuchsia-700'
     : 'bg-zinc-400 hover:bg-zinc-300 active:bg-zinc-500';
@@ -30,7 +30,7 @@ const Button = ({
   return (
     <button
       type='button'
-      className={`${baseClasses} ${sizeClasses[size]} ${colorClasses} ${isHidden ? 'hidden' : 'inline-block'}`}
+      className={`${baseClasses} ${sizeClasses[size]} ${colorClasses} ${isHidden ? 'hidden' : ''}`}
       onClick={handleClick}
     >
       {label}

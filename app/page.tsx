@@ -3,38 +3,52 @@
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import Btn from '../components/Button';
-import DrawingBoard from '../components/DrawingBoard';
 import Dropzone from '../components/Dropzone';
 import Loading from '../components/Loading';
 import ThemeToggle from '../components/ThemeToggle';
+import { CodeTab } from '../components/tabs/CodeTab';
+import { ExportTab } from '../components/tabs/ExportTab';
+import { GenerateTab } from '../components/tabs/GenerateTab';
+import { PreviewTab } from '../components/tabs/PreviewTab';
+import { TabContainer } from '../components/tabs/TabContainer';
+import { ToolsTab } from '../components/tabs/ToolsTab';
+import { useSvg } from '../context/SvgContext';
 import { daysOne } from '../lib/fonts';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
-  const [dropZoneHidden, setDropZoneHidden] = useState(false);
-  const [canvasData, setCanvasData] = useState<string | null>(null);
+  const { svgDataUrl, loadSvg, reset } = useSvg();
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    setIsLoading(true);
-    acceptedFiles.map((file) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setCanvasData(e.target?.result as string);
-        setDropZoneHidden(true);
-        setIsLoading(false);
-      };
-      reader.readAsDataURL(file);
-      return file;
-    });
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      setIsLoading(true);
+      for (const file of acceptedFiles) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const dataUrl = e.target?.result as string;
+
+          // Also read as text to get the SVG string
+          const textReader = new FileReader();
+          textReader.onload = (textEvent) => {
+            const svgString = textEvent.target?.result as string;
+            loadSvg(svgString, dataUrl);
+            setIsLoading(false);
+          };
+          textReader.readAsText(file);
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    [loadSvg]
+  );
 
   const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
-    setCanvasData(null);
+    reset();
     setIsLoading(false);
-    setDropZoneHidden(false);
   };
+
+  const hasSvg = svgDataUrl !== null;
 
   return (
     <div className='relative min-h-screen px-8 flex flex-col justify-around items-center'>
@@ -75,30 +89,50 @@ export default function Home() {
         </a>
       </span>
 
-      <main className='py-16 flex flex-col justify-center items-center flex-1'>
-        <Image
-          src={'/A_2D_digital_illustration_showcases_the_conversion.png'}
-          width={720}
-          height={480}
-          priority={true}
-          alt={'Illustration showcasing SVG to image conversion'}
-        />
-        <h1 className={`${daysOne.className} text-5xl text-center font-light`}>
-          Welcome to SVG-Whiz.
-        </h1>
-        <p className='text-center max-w-125 mx-2 my-6 text-zinc-600 dark:text-zinc-400 leading-relaxed'>
-          A simple tool to convert your SVG files to PNG or GIF format. Drop an SVG below, preview
-          it, and download in your preferred format.
-        </p>
-        <Dropzone onDrop={onDrop} accept={{ 'image/svg+xml': [] }} isHidden={dropZoneHidden} />
-        <DrawingBoard width={500} height={500} svgData={canvasData} />
+      <main className='py-16 flex flex-col justify-center items-center flex-1 w-full'>
+        {!hasSvg ? (
+          <>
+            <Image
+              src={'/A_2D_digital_illustration_showcases_the_conversion.png'}
+              width={720}
+              height={480}
+              priority={true}
+              alt={'Illustration showcasing SVG to image conversion'}
+            />
+            <h1 className={`${daysOne.className} text-5xl text-center font-light`}>
+              Welcome to SVG-Whiz.
+            </h1>
+            <p className='text-center max-w-125 mx-2 my-6 text-zinc-600 dark:text-zinc-400 leading-relaxed'>
+              A powerful SVG toolkit. Convert to multiple formats, optimize, extract colors,
+              generate favicons, and create React/Vue components. Drop an SVG below to get started.
+            </p>
+            <Dropzone onDrop={onDrop} accept={{ 'image/svg+xml': [] }} isHidden={false} />
+          </>
+        ) : (
+          <>
+            <h1 className={`${daysOne.className} text-3xl text-center font-light mb-6`}>
+              SVG-Whiz Toolkit
+            </h1>
+            <TabContainer>
+              {{
+                preview: <PreviewTab />,
+                export: <ExportTab />,
+                code: <CodeTab />,
+                tools: <ToolsTab />,
+                generate: <GenerateTab />,
+              }}
+            </TabContainer>
+            <div className='mt-8'>
+              <Btn
+                handleClick={handleReset}
+                isPrimary={true}
+                isHidden={false}
+                label={'Upload New SVG'}
+              />
+            </div>
+          </>
+        )}
         <Loading visible={isLoading} />
-        <Btn
-          handleClick={handleReset}
-          isPrimary={true}
-          isHidden={!dropZoneHidden}
-          label={'Reset'}
-        />
       </main>
 
       <footer className='flex flex-col py-8 justify-center items-center text-sm'>

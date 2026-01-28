@@ -18,7 +18,9 @@
       "Bash(bun fullcheck:*)",
       "Bash(bun run check)",
       "Bash(bun typecheck:*)",
-      "Bash(bun lint:*)"
+      "Bash(bun lint:*)",
+      "Bash(tree:*)",
+      "Bash(bun run:*)"
     ]
   }
 }
