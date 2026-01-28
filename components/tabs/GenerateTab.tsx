@@ -143,9 +143,9 @@ export function GenerateTab() {
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
           {/* Framework */}
           <div className='space-y-2'>
-            <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+            <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
               Framework
-            </label>
+            </span>
             <div className='flex gap-2'>
               <button
                 type='button'
@@ -175,9 +175,9 @@ export function GenerateTab() {
           {/* Language (React only) */}
           {framework === 'react' && (
             <div className='space-y-2'>
-              <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+              <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
                 Language
-              </label>
+              </span>
               <div className='flex gap-2'>
                 <button
                   type='button'
@@ -207,10 +207,14 @@ export function GenerateTab() {
 
           {/* Component Name */}
           <div className='space-y-2'>
-            <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+            <label
+              htmlFor='component-name'
+              className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'
+            >
               Component Name
             </label>
             <input
+              id='component-name'
               type='text'
               value={componentName}
               onChange={(e) => setComponentName(e.target.value || 'Icon')}
@@ -221,9 +225,9 @@ export function GenerateTab() {
 
           {/* Export Style */}
           <div className='space-y-2'>
-            <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+            <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
               Export Style
-            </label>
+            </span>
             <div className='flex gap-2'>
               <button
                 type='button'

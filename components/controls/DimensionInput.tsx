@@ -46,9 +46,7 @@ export function DimensionInput() {
 
   return (
     <div className='space-y-4'>
-      <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
-        Dimensions
-      </span>
+      <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>Dimensions</span>
 
       {/* Presets */}
       <div className='space-y-2'>
@@ -83,7 +81,12 @@ export function DimensionInput() {
       {/* Custom dimensions */}
       <div className='flex items-center gap-3'>
         <div className='flex-1'>
-          <label htmlFor='width-input' className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'>Width</label>
+          <label
+            htmlFor='width-input'
+            className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'
+          >
+            Width
+          </label>
           <input
             id='width-input'
             type='number'
@@ -108,7 +111,12 @@ export function DimensionInput() {
         </button>
 
         <div className='flex-1'>
-          <label htmlFor='height-input' className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'>Height</label>
+          <label
+            htmlFor='height-input'
+            className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'
+          >
+            Height
+          </label>
           <input
             id='height-input'
             type='number'

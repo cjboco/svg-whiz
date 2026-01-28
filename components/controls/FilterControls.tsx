@@ -111,7 +111,12 @@ export function FilterControls() {
         {sliders.map((slider) => (
           <div key={slider.key} className='space-y-1'>
             <div className='flex items-center justify-between'>
-              <label htmlFor={`filter-${slider.key}`} className='text-sm text-zinc-700 dark:text-zinc-300'>{slider.label}</label>
+              <label
+                htmlFor={`filter-${slider.key}`}
+                className='text-sm text-zinc-700 dark:text-zinc-300'
+              >
+                {slider.label}
+              </label>
               <span className='text-xs text-zinc-500 dark:text-zinc-400 font-mono'>
                 {filters[slider.key]}
                 {slider.unit}

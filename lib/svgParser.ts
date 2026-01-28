@@ -76,21 +76,24 @@ export function extractColors(svgString: string): string[] {
 
   // Extract named colors from attributes
   const attributePattern = patterns[3];
-  let match: RegExpExecArray | null;
-  while ((match = attributePattern.exec(svgString)) !== null) {
+  let match: RegExpExecArray | null = attributePattern.exec(svgString);
+  while (match !== null) {
     const colorName = match[1].toLowerCase();
     if (namedColors.has(colorName)) {
       colors.add(colorName);
     }
+    match = attributePattern.exec(svgString);
   }
 
   // Also look for style attributes with colors
   const stylePattern = /style=["'][^"']*(?:fill|stroke|color):\s*([^;}"']+)/gi;
-  while ((match = stylePattern.exec(svgString)) !== null) {
-    const value = match[1].trim().toLowerCase();
+  let styleMatch: RegExpExecArray | null = stylePattern.exec(svgString);
+  while (styleMatch !== null) {
+    const value = styleMatch[1].trim().toLowerCase();
     if (value && value !== 'none' && value !== 'currentcolor') {
       colors.add(normalizeColor(value));
     }
+    styleMatch = stylePattern.exec(svgString);
   }
 
   // Filter out special values

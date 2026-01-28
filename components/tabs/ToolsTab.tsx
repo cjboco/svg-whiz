@@ -131,9 +131,9 @@ export function ToolsTab() {
 
         {/* Preset selector */}
         <div className='space-y-2'>
-          <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+          <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
             Optimization Preset
-          </label>
+          </span>
           <div className='flex flex-wrap justify-center gap-2'>
             {[
               {

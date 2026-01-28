@@ -15,7 +15,12 @@ export function QualitySlider() {
   return (
     <div className='space-y-3'>
       <div className='flex items-center justify-between'>
-        <label htmlFor='quality-slider' className='text-sm font-medium text-zinc-700 dark:text-zinc-300'>Quality</label>
+        <label
+          htmlFor='quality-slider'
+          className='text-sm font-medium text-zinc-700 dark:text-zinc-300'
+        >
+          Quality
+        </label>
         <span className='text-sm text-zinc-500 dark:text-zinc-400 font-mono'>{quality}%</span>
       </div>
 
