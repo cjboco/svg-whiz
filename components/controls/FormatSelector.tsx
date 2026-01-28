@@ -70,9 +70,9 @@ export function FormatSelector() {
 
   return (
     <div className='space-y-3'>
-      <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+      <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
         Export Format
-      </label>
+      </span>
 
       <div className='grid grid-cols-2 sm:grid-cols-3 gap-2'>
         {formats.map((format) => (

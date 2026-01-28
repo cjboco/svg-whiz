@@ -46,9 +46,9 @@ export function DimensionInput() {
 
   return (
     <div className='space-y-4'>
-      <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+      <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
         Dimensions
-      </label>
+      </span>
 
       {/* Presets */}
       <div className='space-y-2'>
@@ -83,8 +83,9 @@ export function DimensionInput() {
       {/* Custom dimensions */}
       <div className='flex items-center gap-3'>
         <div className='flex-1'>
-          <label className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'>Width</label>
+          <label htmlFor='width-input' className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'>Width</label>
           <input
+            id='width-input'
             type='number'
             value={currentWidth}
             onChange={(e) => handleWidthChange(e.target.value)}
@@ -107,8 +108,9 @@ export function DimensionInput() {
         </button>
 
         <div className='flex-1'>
-          <label className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'>Height</label>
+          <label htmlFor='height-input' className='block text-xs text-zinc-500 dark:text-zinc-400 mb-1'>Height</label>
           <input
+            id='height-input'
             type='number'
             value={currentHeight}
             onChange={(e) => handleHeightChange(e.target.value)}

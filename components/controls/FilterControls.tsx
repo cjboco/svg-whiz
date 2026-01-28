@@ -85,9 +85,9 @@ export function FilterControls() {
 
       {/* Presets */}
       <div className='space-y-2'>
-        <label className='block text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide'>
+        <span className='block text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide'>
           Presets
-        </label>
+        </span>
         <div className='flex flex-wrap gap-2'>
           {presets.map((preset) => (
             <button
@@ -111,13 +111,14 @@ export function FilterControls() {
         {sliders.map((slider) => (
           <div key={slider.key} className='space-y-1'>
             <div className='flex items-center justify-between'>
-              <label className='text-sm text-zinc-700 dark:text-zinc-300'>{slider.label}</label>
+              <label htmlFor={`filter-${slider.key}`} className='text-sm text-zinc-700 dark:text-zinc-300'>{slider.label}</label>
               <span className='text-xs text-zinc-500 dark:text-zinc-400 font-mono'>
                 {filters[slider.key]}
                 {slider.unit}
               </span>
             </div>
             <input
+              id={`filter-${slider.key}`}
               type='range'
               min={slider.min}
               max={slider.max}

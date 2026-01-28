@@ -17,9 +17,9 @@ export function ScaleSelector() {
 
   return (
     <div className='space-y-3'>
-      <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+      <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
         Scale Factor
-      </label>
+      </span>
 
       <div className='flex gap-2'>
         {scales.map((s) => (

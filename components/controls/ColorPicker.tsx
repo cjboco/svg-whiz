@@ -33,9 +33,9 @@ export function ColorPicker() {
 
   return (
     <div className='space-y-3'>
-      <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+      <span className='block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
         Background Color
-      </label>
+      </span>
 
       {/* Presets */}
       <div className='flex flex-wrap gap-2'>
