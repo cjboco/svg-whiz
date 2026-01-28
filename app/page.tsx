@@ -93,7 +93,7 @@ export default function Home() {
         {!hasSvg ? (
           <>
             <Image
-              src={'/A_2D_digital_illustration_showcases_the_conversion.png'}
+              src={'/svg-whiz-character.png'}
               width={720}
               height={480}
               priority={true}
