@@ -264,12 +264,14 @@ export function GenerateTab() {
                 style={{ ...style, margin: 0 }}
               >
                 {tokens.map((line, i) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Syntax highlighting tokens require index keys
                   <div key={`line-${i}`} {...getLineProps({ line })}>
                     <span className='select-none text-zinc-500 mr-4 inline-block w-8 text-right'>
                       {i + 1}
                     </span>
-                    {line.map((token, key) => (
-                      <span key={`token-${i}-${key}`} {...getTokenProps({ token })} />
+                    {line.map((token, tokenIndex) => (
+                      // biome-ignore lint/suspicious/noArrayIndexKey: Tokens have no unique ID
+                      <span key={`token-${i}-${tokenIndex}`} {...getTokenProps({ token })} />
                     ))}
                   </div>
                 ))}

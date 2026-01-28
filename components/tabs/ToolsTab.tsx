@@ -242,8 +242,9 @@ export function ToolsTab() {
 
         {extractedColors.length > 0 ? (
           <div className='flex flex-wrap justify-center gap-3'>
-            {extractedColors.map((color, index) => (
-              <ColorSwatch key={`${color}-${index}`} color={color} />
+            {/* Colors are unique (from Set), so color value is a stable key */}
+            {extractedColors.map((color) => (
+              <ColorSwatch key={color} color={color} />
             ))}
           </div>
         ) : (
